@@ -3,6 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
 
+
+
     defaultConfig {
         applicationId "com.example.evcharger"
         minSdkVersion 16
@@ -15,8 +17,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true//true开启混淆配置
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false//true开启混淆配置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -35,6 +36,9 @@ android {
 }
 
 dependencies {
+
+
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
@@ -42,7 +46,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
     implementation 'androidx.navigation:navigation-ui:2.3.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation files('libs\\BaiduLBSAndroid.jar')
+    implementation files('libs/BaiduLBS_Android.jar')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

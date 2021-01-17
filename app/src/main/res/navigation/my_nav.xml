@@ -55,4 +55,14 @@
         android:name="com.example.evcharger.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/main_page"
+        android:name="com.example.evcharger.main_page"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/action_main_page_to_setFragment"
+            app:destination="@id/setFragment" />
+    </fragment>
+
 </navigation>
