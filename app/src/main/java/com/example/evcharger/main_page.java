@@ -1,6 +1,8 @@
 package com.example.evcharger;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +10,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 
 import com.huawei.hms.hmsscankit.ScanUtil;
 import com.huawei.hms.ml.scan.HmsScan;
+import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -24,8 +28,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class main_page extends Fragment {
-    Integer REQUEST_CODE_SCAN_ONE = 100;
-
+    private final Integer REQUEST_CODE_SCAN_ONE = 100;
+    private Integer CAMERA_REQ_CODE = 100;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -66,26 +70,41 @@ public class main_page extends Fragment {
         }
 
 
-
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        FragmentActivity activity = this.getActivity();
 
         getView().findViewById(R.id.floatingActionButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.setFragment));
 
         getView().findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
-
+            //“QRCODE_SCAN_TYPE”和“DATAMATRIX_SCAN_TYPE”表示只扫描QR和Data Matrix的码
+            //HmsScanAnalyzerOptions options = new HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.QRCODE_SCAN_TYPE , HmsScan.DATAMATRIX_SCAN_TYPE).create();
             @Override
             public void onClick(View view) {
+
+                //CAMERA_REQ_CODE为用户自定义，用于接收权限校验结果
+                ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, CAMERA_REQ_CODE);
+//                TextView viewById = getView().findViewById(R.id.textView5);
+//                viewById.setText("asdasad!");
                 ScanUtil.startScan(getActivity(), REQUEST_CODE_SCAN_ONE, null);
+
             }
         });
+
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        //判断“requestCode”是否为申请权限时设置请求码CAMERA_REQ_CODE，然后校验权限开启状态
+        if (requestCode == CAMERA_REQ_CODE && grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+            //调用扫码接口，构建扫码能力，需您实现
+            ScanUtil.startScan(getActivity(), REQUEST_CODE_SCAN_ONE, null);
+
+        }
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -98,12 +117,11 @@ public class main_page extends Fragment {
             HmsScan obj = data.getParcelableExtra(ScanUtil.RESULT);
             if (obj != null) {
                 //展示解码结果
-                TextView T = (TextView)getView().findViewById(R.id.textView5);
-                T.setText(obj.originalValue);
+                TextView viewById = getView().findViewById(R.id.textView5);
+                viewById.setText(obj.originalValue);
             }
         }
     }
-
 
 
 

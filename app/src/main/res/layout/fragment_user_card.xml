@@ -23,6 +23,7 @@
         android:layout_height="14dp"
         android:background="#00FFFFFF"
         android:text="用户"
+        android:textAlignment="center"
         android:textColor="#171414"
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"

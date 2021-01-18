@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
         android:text="扫码"
+        android:textAlignment="center"
         android:textColor="#171414"
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
