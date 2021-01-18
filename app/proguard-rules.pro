@@ -20,8 +20,22 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class com.baidu.** {*;}
--keep class vi.com.** {*;}
--keep class com.baidu.vi.** {*;}
+-keep class com.baidu.*
+-keep class vi.com.*
+-keep class com.baidu.vi.*
+
+
+-keep class com.huawei.hianalytics.*
+-keep class com.huawei.updatesdk.*
+-keep class com.huawei.hms.*
+
 -dontwarn com.baidu.**
+
+-ignorewarnings
+-keepattributes *Annotation*
+-keepattributes Exceptions
+-keepattributes InnerClasses
+-keepattributes Signature
+-keepattributes SourceFile,LineNumberTable
+
 

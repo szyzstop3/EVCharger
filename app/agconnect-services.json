@@ -1,0 +1,14 @@
+{
+	"client":{
+		"appType":"1",
+		"cp_id":"2850086000455600292",
+		"product_id":"736430079244785200",
+		"client_id":"542526732167546048",
+		"client_secret":"EA2F943CB7772F2AE0F140FCE0331163B1CF8DD19647D1EE7FBCF1798EE360CC",
+		"project_id":"736430079244785200",
+		"app_id":"103700513",
+		"api_key":"CgB6e3x9iaMeFQ/F+EQlZGNwcaOR0JaMZXD1htGXIRQSnMPBiaYOCkmOlT2hpGX1PbkVBCogrGPxHVCVAs5FF3F+",
+		"package_name":"com.example.evcharger"
+	},
+	"configuration_version":"1.0"
+}
