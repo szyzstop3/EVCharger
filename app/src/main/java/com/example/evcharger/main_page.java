@@ -84,44 +84,29 @@ public class main_page extends Fragment {
             //HmsScanAnalyzerOptions options = new HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.QRCODE_SCAN_TYPE , HmsScan.DATAMATRIX_SCAN_TYPE).create();
             @Override
             public void onClick(View view) {
-
+                TextView viewById = getView().findViewById(R.id.textView5);
+                viewById.setText("1启动");
                 //CAMERA_REQ_CODE为用户自定义，用于接收权限校验结果
-                ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, CAMERA_REQ_CODE);
-//                TextView viewById = getView().findViewById(R.id.textView5);
-//                viewById.setText("asdasad!");
-                ScanUtil.startScan(getActivity(), REQUEST_CODE_SCAN_ONE, null);
-
+                main_page.this.requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, CAMERA_REQ_CODE);
+                viewById.setText("99启动");
             }
         });
 
     }
 
+    //实现“onRequestPermissionsResult”函数接收校验权限结果
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        TextView viewById = getView().findViewById(R.id.textView5);
+        viewById.setText("2调用接口");
         //判断“requestCode”是否为申请权限时设置请求码CAMERA_REQ_CODE，然后校验权限开启状态
         if (requestCode == CAMERA_REQ_CODE && grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+            viewById.setText("3调用接口成功");
             //调用扫码接口，构建扫码能力，需您实现
-            ScanUtil.startScan(getActivity(), REQUEST_CODE_SCAN_ONE, null);
-
+            ScanUtil.startScan(this.getActivity(), REQUEST_CODE_SCAN_ONE, null);
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != RESULT_OK || data == null) {
-            return;
-        }
-        if (requestCode == REQUEST_CODE_SCAN_ONE) {
-            //导入图片扫描返回结果
-            HmsScan obj = data.getParcelableExtra(ScanUtil.RESULT);
-            if (obj != null) {
-                //展示解码结果
-                TextView viewById = getView().findViewById(R.id.textView5);
-                viewById.setText(obj.originalValue);
-            }
-        }
-    }
 
 
 

@@ -1,14 +1,41 @@
 package com.example.evcharger;
 
+import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.huawei.hms.hmsscankit.ScanUtil;
+import com.huawei.hms.ml.scan.HmsScan;
+
 public class MainActivity extends AppCompatActivity {
+    private final Integer REQUEST_CODE_SCAN_ONE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        TextView viewById = findViewById(R.id.textView5);
+        viewById.setText("4调用回调接口");
+        if (resultCode != RESULT_OK || data == null) {
+            return;
+        }
+        if (requestCode == REQUEST_CODE_SCAN_ONE) {
+            //导入图片扫描返回结果
+            HmsScan obj = data.getParcelableExtra(ScanUtil.RESULT);
+            if (obj != null) {
+                //展示解码结果
+                viewById.setText(obj.getOriginalValue());
+            }
+        }
+    }
+
+
 }
