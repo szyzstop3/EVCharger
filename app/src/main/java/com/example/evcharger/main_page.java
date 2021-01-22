@@ -78,7 +78,6 @@ public class main_page extends Fragment {
 
 
         getView().findViewById(R.id.floatingActionButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.setFragment));
-
         getView().findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
             //“QRCODE_SCAN_TYPE”和“DATAMATRIX_SCAN_TYPE”表示只扫描QR和Data Matrix的码
             //HmsScanAnalyzerOptions options = new HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.QRCODE_SCAN_TYPE , HmsScan.DATAMATRIX_SCAN_TYPE).create();
@@ -104,6 +103,7 @@ public class main_page extends Fragment {
             viewById.setText("3调用接口成功");
             //调用扫码接口，构建扫码能力，需您实现
             ScanUtil.startScan(this.getActivity(), REQUEST_CODE_SCAN_ONE, null);
+            //viewById.setText("houmian");
         }
     }
 

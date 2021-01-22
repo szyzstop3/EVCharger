@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
 
 import com.huawei.hms.hmsscankit.ScanUtil;
 import com.huawei.hms.ml.scan.HmsScan;
@@ -31,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
             //导入图片扫描返回结果
             HmsScan obj = data.getParcelableExtra(ScanUtil.RESULT);
             if (obj != null) {
+                Bundle bundle = new Bundle();
+                bundle.putString("testvalue",obj.getOriginalValue());
                 //展示解码结果
-                viewById.setText(obj.getOriginalValue());
+                Navigation.findNavController(viewById).navigate(R.id.action_main_page_to_blankFragment_test,bundle);
+//                TextView viewById1 = findViewById(R.id.textView10);
+//                viewById1.setText(obj.getOriginalValue());
             }
         }
     }

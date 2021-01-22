@@ -63,6 +63,14 @@
         <action
             android:id="@+id/action_main_page_to_setFragment"
             app:destination="@id/setFragment" />
+        <action
+            android:id="@+id/action_main_page_to_blankFragment_test"
+            app:destination="@id/blankFragment_test" />
     </fragment>
+    <fragment
+        android:id="@+id/blankFragment_test"
+        android:name="com.example.evcharger.BlankFragment_test"
+        android:label="fragment_blank_test"
+        tools:layout="@layout/fragment_blank_test" />
 
 </navigation>
