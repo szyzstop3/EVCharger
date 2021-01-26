@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_loginFragment_to_MNVFragment"
             app:destination="@id/MNVFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_main_page"
+            app:destination="@id/main_page" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -49,6 +52,9 @@
         <action
             android:id="@+id/action_setFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_setFragment_to_customerService_page"
+            app:destination="@id/customerService_page" />
     </fragment>
     <fragment
         android:id="@+id/mapsFragment"
@@ -72,5 +78,9 @@
         android:name="com.example.evcharger.BlankFragment_test"
         android:label="fragment_blank_test"
         tools:layout="@layout/fragment_blank_test" />
+    <activity
+        android:id="@+id/customerService_page"
+        android:name="com.example.evcharger.CustomerService_page"
+        android:label="CustomerService_page" />
 
 </navigation>
