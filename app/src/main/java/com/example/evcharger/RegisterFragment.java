@@ -1,13 +1,20 @@
 package com.example.evcharger;
 
+import android.app.AlertDialog;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import com.example.evcharger.DAO.impl.Userimpl;
+import com.example.evcharger.vo.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,6 +76,64 @@ public class RegisterFragment extends Fragment {
         //一句话实现导航
         getView().findViewById(R.id.button4).setOnClickListener(Navigation.
                 createNavigateOnClickListener(R.id.action_registerFragment_to_loginFragment));
+        getView().findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View view) {
+//                User user = new User();
+//                TextView Name = getView().findViewById(R.id.editTextTextPersonName2);
+//                TextView Pwd = getView().findViewById(R.id.editTextTextPersonName3);
+//                TextView Telep = getView().findViewById(R.id.editTextTextPersonName5);
+//                RadioGroup TSex = getView().findViewById(R.id.sex);
+//                RadioButton Sex = getView().findViewById(TSex.getCheckedRadioButtonId());
+//                user.setName(Name.getText().toString());
+//                user.setPassword(Pwd.getText().toString());
+//                user.setPhone(Telep.getText().toString());
+//                if(Sex.getText()=="男"){
+//                    user.setSex(1);
+//                }else if(Sex.getText()=="女"){
+//                    user.setSex(0);
+//                }
+//                new Userimpl().InsertUser(user);
+
+
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Looper.prepare();
+                        User user = new User();
+                        user.setName("sss");
+                        user.setPassword("nnnnnn");
+                        user.setPhone("213123");
+                        user.setSex(1);
+                        Boolean option =  new Userimpl().InsertUser(user);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        if(option){
+                            builder.setTitle("确认" ) ;
+                            builder.setMessage("数据上传成功！" ) ;
+                            builder.setPositiveButton("是" ,  null );
+                        }
+                        else {
+                            builder.setTitle("确认" ) ;
+                            builder.setMessage("数据上传失败！" ) ;
+                            builder.setPositiveButton("是" ,  null );
+                        }
+                        builder.show();
+                        Looper.loop();
+                    }
+                }).start();
+
+
+                /**
+                 * 设置消息弹框
+                 */
+
+
+
+            }
+        });
 //        BT.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

@@ -1,8 +1,8 @@
 package com.example.evcharger.vo;
 
 public class User {
-    private int id;
-    private int sex;
+    private Integer id;
+    private Integer sex;
     private String name;
     private String phone;
     private String password;

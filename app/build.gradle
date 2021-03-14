@@ -4,7 +4,7 @@ apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion 29
-
+    useLibrary 'org.apache.http.legacy'
 
 
     defaultConfig {
@@ -57,6 +57,7 @@ dependencies {
     implementation files('libs\\javapoet-1.9.0.jar')
     implementation files('libs\\protobuf-java-2.3.0-micro.jar')
     implementation files('libs\\protobuf_gens-map.jar')
+    implementation files('libs\\mysql-connector-java-8.0.19.jar')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
