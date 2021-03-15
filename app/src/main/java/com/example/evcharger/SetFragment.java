@@ -1,14 +1,13 @@
 package com.example.evcharger;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,5 +68,6 @@ public class SetFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         getView().findViewById(R.id.button14).
                 setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_setFragment_to_loginFragment));
+        getView().findViewById(R.id.button12).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_setFragment_to_customerService_page));
     }
 }
