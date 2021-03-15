@@ -75,7 +75,7 @@ public class main_page extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        getView().findViewById(R.id.g1).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_main_page_to_pay_page));
 
         getView().findViewById(R.id.floatingActionButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.setFragment));
         getView().findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {

@@ -66,11 +66,18 @@
         <action
             android:id="@+id/action_main_page_to_blankFragment_test"
             app:destination="@id/blankFragment_test" />
+        <action
+            android:id="@+id/action_main_page_to_pay_page"
+            app:destination="@id/pay_page" />
     </fragment>
     <fragment
         android:id="@+id/blankFragment_test"
         android:name="com.example.evcharger.BlankFragment_test"
         android:label="fragment_blank_test"
         tools:layout="@layout/fragment_blank_test" />
+    <activity
+        android:id="@+id/pay_page"
+        android:name="com.example.evcharger.Pay_page"
+        android:label="Pay_page" />
 
 </navigation>
