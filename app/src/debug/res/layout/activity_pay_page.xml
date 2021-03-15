@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="如对订单有任何疑问，请立即联系客服">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardView"
@@ -116,21 +115,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="#42d5d1">
+            android:background="#42d5d1" >
 
             <TextView
                 android:id="@+id/textView15"
-                android:layout_width="430dp"
-                android:layout_height="28dp"
-                android:text="@string/订单"
-                android:textAlignment="center"
-                android:textSize="18sp"
+                android:layout_width="319dp"
+                android:layout_height="34dp"
+                android:text="如果对订单有疑问，请及时联系客服处理"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.533" />
-
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
