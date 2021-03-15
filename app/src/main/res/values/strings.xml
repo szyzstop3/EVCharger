@@ -3,5 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="EVCharger">EVCharger</string>
+    <string name="ServerCenter">客服中心</string>
+    <string name="PayCenter">支付中心</string>
     <string name="订单">如对订单有任何疑问，请立即联系客服</string>
 </resources>
