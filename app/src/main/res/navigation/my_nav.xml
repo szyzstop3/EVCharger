@@ -89,5 +89,10 @@
         android:id="@+id/pay_page"
         android:name="com.example.evcharger.Pay_page"
         android:label="Pay_page" />
+    <fragment
+        android:id="@+id/judge_page"
+        android:name="com.example.evcharger.judge_page"
+        android:label="fragment_judge_page"
+        tools:layout="@layout/fragment_judge_page" />
 
 </navigation>
