@@ -5,4 +5,5 @@ import com.example.evcharger.vo.User;
 public interface UserDAO {
 
     public boolean InsertUser(User user);
+    public boolean LoginUser(User user);
 }

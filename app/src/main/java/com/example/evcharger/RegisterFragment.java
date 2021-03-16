@@ -4,13 +4,18 @@ import android.app.AlertDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.evcharger.DAO.impl.Userimpl;
@@ -22,6 +27,10 @@ import com.example.evcharger.vo.User;
  * create an instance of this fragment.
  */
 public class RegisterFragment extends Fragment {
+    String Ssex;
+    RadioGroup rg;
+    RadioButton rb_Male;
+    RadioButton rb_Female;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,9 +79,35 @@ public class RegisterFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
 
+    class MyRadioButtonListener implements RadioGroup.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            // 选中状态改变时被触发
+            switch (checkedId) {
+                case R.id.man:
+                    Log.i("sex", "当前用户选择" + rb_Female.getText().toString());
+                    Ssex = "1";
+                    break;
+                case R.id.woman:
+                    Log.i("sex", "当前用户选择" + rb_Male.getText().toString());
+                    Ssex = "0";
+                    break;
+            }
+        }
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
+        rg = (RadioGroup) getView().findViewById(R.id.sex);
+        rb_Male = (RadioButton) getView().findViewById(R.id.man);
+        rb_Female = (RadioButton) getView().findViewById(R.id.woman);
+        rg.setOnCheckedChangeListener(new MyRadioButtonListener());
+
+
         //一句话实现导航
         getView().findViewById(R.id.button4).setOnClickListener(Navigation.
                 createNavigateOnClickListener(R.id.action_registerFragment_to_loginFragment));
@@ -80,6 +115,9 @@ public class RegisterFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
+                TextView Name = (TextView) getView().findViewById(R.id.editTextTextPersonName2);
+                TextView Pwd = (TextView) getView().findViewById(R.id.editTextTextPersonName3);
+                TextView Phon = (TextView) getView().findViewById(R.id.editTextTextPersonName5);
 //                User user = new User();
 //                TextView Name = getView().findViewById(R.id.editTextTextPersonName2);
 //                TextView Pwd = getView().findViewById(R.id.editTextTextPersonName3);
@@ -103,17 +141,17 @@ public class RegisterFragment extends Fragment {
                     public void run() {
                         Looper.prepare();
                         User user = new User();
-                        user.setName("sss");
-                        user.setPassword("nnnnnn");
-                        user.setPhone("213123");
-                        user.setSex(1);
+                        user.setName(""+Name.getText());
+                        user.setPassword(""+Pwd.getText());
+                        user.setPhone(""+Phon.getText());
+                        user.setSex(Integer.parseInt(Ssex));
                         Boolean option =  new Userimpl().InsertUser(user);
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                         if(option){
                             builder.setTitle("确认" ) ;
                             builder.setMessage("数据上传成功！" ) ;
-                            builder.setPositiveButton("是" ,  null );
+                            builder.setPositiveButton("是", null);
                         }
                         else {
                             builder.setTitle("确认" ) ;
@@ -121,6 +159,8 @@ public class RegisterFragment extends Fragment {
                             builder.setPositiveButton("是" ,  null );
                         }
                         builder.show();
+                        NavController controller= Navigation.findNavController(getView());
+                        controller.navigate(R.id.action_registerFragment_to_loginFragment);
                         Looper.loop();
                     }
                 }).start();
@@ -143,3 +183,4 @@ public class RegisterFragment extends Fragment {
 //        });
     }
 }
+
