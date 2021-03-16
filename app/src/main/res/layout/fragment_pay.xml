@@ -7,8 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardView"
-        android:layout_width="458dp"
-        android:layout_height="123dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,12 +39,11 @@
 
             <TextView
                 android:id="@+id/textView11"
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:text="姓名：XXX"
                 app:layout_constraintBottom_toTopOf="@+id/textView13"
-                app:layout_constraintEnd_toStartOf="@+id/textView12"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,12 +51,10 @@
                 android:id="@+id/textView12"
                 android:layout_width="170dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="40dp"
                 android:layout_marginEnd="20dp"
                 android:text="手机号：131XXXXXXXX"
                 app:layout_constraintBottom_toTopOf="@+id/textView13"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -104,7 +101,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="589dp"
+        android:layout_width="0dp"
         android:layout_height="75dp"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="20dp"
@@ -115,8 +112,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="#42d5d1" >
+            android:layout_height="match_parent"
+            android:background="#42d5d1">
 
             <TextView
                 android:id="@+id/textView15"
@@ -148,8 +145,8 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="176dp"
-        android:layout_height="54dp"
+        android:layout_width="178dp"
+        android:layout_height="45dp"
         android:layout_marginStart="20dp"
         android:text="现在支付："
         android:textAlignment="center"
@@ -195,14 +192,17 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="102dp"
+        android:layout_height="33dp"
         android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
         android:text="支付宝"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline22"
+        app:layout_constraintEnd_toStartOf="@+id/radioButton"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
         app:layout_constraintTop_toTopOf="@+id/guideline20"
         app:layout_constraintVertical_bias="0.327" />
@@ -211,11 +211,10 @@
         android:id="@+id/radioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginEnd="20dp"
         android:textAlignment="textEnd"
         app:layout_constraintBottom_toTopOf="@+id/guideline22"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toTopOf="@+id/guideline20" />
 
     <androidx.cardview.widget.CardView
@@ -237,9 +236,10 @@
 
     <TextView
         android:id="@+id/textView19"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="96dp"
+        android:layout_height="26dp"
         android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
         android:text="微信"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -247,6 +247,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline24"
+        app:layout_constraintEnd_toStartOf="@+id/radioButton2"
         app:layout_constraintStart_toEndOf="@+id/cardView5"
         app:layout_constraintTop_toTopOf="@+id/guideline22"
         app:layout_constraintVertical_bias="0.327" />
@@ -255,10 +256,9 @@
         android:id="@+id/radioButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toTopOf="@+id/guideline22" />
 
     <TextView
@@ -266,6 +266,7 @@
         android:layout_width="344dp"
         android:layout_height="30dp"
         android:layout_marginStart="40dp"
+        android:clickable="true"
         android:text="请选择其他支付方式"
         android:textAlignment="textStart"
         android:textSize="18sp"
@@ -276,20 +277,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline24"
         app:layout_constraintVertical_bias="0.545" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="329dp"
-        android:layout_height="88dp"
-        android:text="我同意“桩桩皆电”支付守则，取消政策和退款政策。我也同意支付以下所示的总金额（含服务费)。  "
-        android:textAlignment="viewStart"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline23"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline21"
-        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView6"
@@ -302,15 +289,16 @@
         app:layout_constraintVertical_bias="0.533">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="551dp"
+            android:id="@+id/qrzf"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#42d5d1">
 
             <TextView
                 android:id="@+id/textView26"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="212dp"
+                android:layout_width="109dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="72dp"
                 android:text="￥XX.XX"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -318,34 +306,43 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.636" />
+                app:layout_constraintVertical_bias="0.508" />
 
-            <Button
-                android:id="@+id/button21"
+            <TextView
+                android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
+                android:layout_marginStart="52dp"
                 android:text="确认支付"
                 android:textColor="#000000"
                 android:textSize="24sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView26"
+                app:layout_constraintStart_toStartOf="@+id/button21"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button21"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#00FFFFFF"
+                android:textColor="#00FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <RadioButton
-        android:id="@+id/man"
+    <CheckBox
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:text="我同意“桩桩皆电”支付守则，取消政策和退款政策。我也同意支付以下所示的总金额（含服务费)。  "
+        android:textColor="#72000000"
         app:layout_constraintBottom_toTopOf="@+id/guideline23"
-        app:layout_constraintEnd_toStartOf="@+id/textView21"
-        app:layout_constraintHorizontal_bias="0.275"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline21"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintTop_toTopOf="@+id/guideline21" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

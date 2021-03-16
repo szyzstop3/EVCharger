@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         TextView viewById = findViewById(R.id.textView5);
         viewById.setText("4调用回调接口");
         if (resultCode != RESULT_OK || data == null) {
