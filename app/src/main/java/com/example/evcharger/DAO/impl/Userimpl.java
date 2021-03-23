@@ -84,7 +84,7 @@ public class Userimpl implements UserDAO {
                 String line = reader.readLine();
                 Log.d("mytest","line");
                 Log.d("mytest",line);
-                if(line=="true"){
+                if(line.equals("true")){
                     Log.d("mytest","1");
                     r = true;
                 }else {
