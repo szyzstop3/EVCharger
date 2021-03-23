@@ -1,5 +1,7 @@
 package com.example.evcharger.DAO.impl;
 
+import android.util.Log;
+
 import com.example.evcharger.DAO.UserDAO;
 import com.example.evcharger.vo.User;
 
@@ -63,34 +65,41 @@ public class Userimpl implements UserDAO {
 
     @Override
     public boolean LoginUser(User user) {
+        boolean r = false;
         try{
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://8.140.120.98:8080/EVBackEnd-1.0-SNAPSHOT/myservlet");
+            HttpPost httpPost = new HttpPost("http://8.140.120.98:8080/EVBackEnd-1.0-SNAPSHOT/usercf");
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("name", user.getName()));
             params.add(new BasicNameValuePair("pwd", user.getPassword()));
-            params.add(new BasicNameValuePair("ph", user.getPhone()));
-            params.add(new BasicNameValuePair("sex", "" + user.getSex()));
             UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params,"UTF-8");
             httpPost.setEntity(entity);
             HttpResponse httpResponse =  httpClient.execute(httpPost);
-            if (httpResponse.getStatusLine().getStatusCode() == 200) {
+            Log.d("mytest",String.valueOf(httpResponse.getStatusLine().getStatusCode()));
+            //if (httpResponse.getStatusLine().getStatusCode() == 200) {
                 HttpEntity entity2 = httpResponse.getEntity();
                 InputStream in = entity2.getContent();
                 BufferedReader reader = new BufferedReader(
                         new InputStreamReader(in));
                 String line = reader.readLine();
+                Log.d("mytest","line");
+                Log.d("mytest",line);
                 if(line=="true"){
-                    return true;
+                    Log.d("mytest","1");
+                    r = true;
+                }else {
+                    Log.d("mytest","2");
+                    r = false;
                 }
 //
 //                        detail = EntityUtils.toString(entity2, "utf-8");
 //                        handler.sendEmptyMessage(SHOW_DATA);
-            }
+          //  }
         }catch(Exception e){
             e.printStackTrace();
         }
-        return false;
+        Log.d("mytest","r="+r);
+        return r;
     }
 
 }

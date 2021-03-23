@@ -1,15 +1,21 @@
 package com.example.evcharger;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.example.evcharger.DAO.impl.Userimpl;
+import com.example.evcharger.vo.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +23,7 @@ import androidx.navigation.Navigation;
  * create an instance of this fragment.
  */
 public class LoginFragment extends Fragment {
+    Boolean option;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,18 +75,68 @@ public class LoginFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         Button B1;
         B1 = getView().findViewById(R.id.button3);
         //设置页面导航按钮
         B1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 NavController NC = Navigation.findNavController(view);
                 NC.navigate(R.id.action_loginFragment_to_registerFragment);
             }
         });
-        getView().findViewById(R.id.button2).setOnClickListener
-                (Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_main_page));
+//        getView().findViewById(R.id.button2).setOnClickListener
+//                (Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_main_page));
+        getView().findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView Name = (TextView) getView().findViewById(R.id.editTextTextPersonName);
+                TextView Pwd = (TextView) getView().findViewById(R.id.editTextTextPassword);
+
+                 String name = ""+Name.getText();
+                 String pwd = ""+Pwd.getText();
+                 if(name.isEmpty()||pwd.isEmpty()||name.equals("")||pwd.equals("")){
+                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                     builder.setTitle("确认" ) ;
+                     builder.setMessage("请输入用户名和密码" ) ;
+                     builder.setPositiveButton("是", null);
+                     builder.show();
+                 }else {
+                     new Thread(new Runnable() {
+                         @Override
+                         public void run() {
+                             Looper.prepare();
+                             User user = new User();
+                             user.setName(name);
+                             user.setPassword(pwd);
+                             Userimpl ui =  new Userimpl();
+                             option = ui.LoginUser(user);
+                             System.out.println(option);
+                             Looper.loop();
+                         }
+                     }).start();
+
+                     while (option==null){
+
+                     }
+                     if(option){
+                         NavController NC = Navigation.findNavController(view);
+                         NC.navigate(R.id.action_loginFragment_to_main_page);
+
+                     }else {
+                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                         builder.setTitle("确认" ) ;
+                         builder.setMessage("请使用正确的用户名和密码再次尝试！" ) ;
+                         builder.setPositiveButton("是", null);
+                         builder.show();
+                     }
+                 }
+
+
+            }
+        });
     }
 
 }
