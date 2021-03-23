@@ -100,7 +100,7 @@ public class LoginFragment extends Fragment {
                  if(name.isEmpty()||pwd.isEmpty()||name.equals("")||pwd.equals("")){
                      AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                      builder.setTitle("确认" ) ;
-                     builder.setMessage("请输入用户名和密码" ) ;
+                     builder.setMessage("请输入用户名和密码后再试！" ) ;
                      builder.setPositiveButton("是", null);
                      builder.show();
                  }else {
