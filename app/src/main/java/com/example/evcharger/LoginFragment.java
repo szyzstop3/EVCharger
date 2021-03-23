@@ -119,13 +119,19 @@ public class LoginFragment extends Fragment {
                      }).start();
 
                      while (option==null){
-
+                         try {
+                             Thread.currentThread().sleep(100);
+                         } catch (InterruptedException e) {
+                             e.printStackTrace();
+                         }
                      }
                      if(option){
+                         option = null;
                          NavController NC = Navigation.findNavController(view);
                          NC.navigate(R.id.action_loginFragment_to_main_page);
 
                      }else {
+                         option = null;
                          AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                          builder.setTitle("确认" ) ;
                          builder.setMessage("请使用正确的用户名和密码再次尝试！" ) ;
