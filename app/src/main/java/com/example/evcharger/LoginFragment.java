@@ -99,7 +99,7 @@ public class LoginFragment extends Fragment {
                  String pwd = ""+Pwd.getText();
                  if(name.isEmpty()||pwd.isEmpty()||name.equals("")||pwd.equals("")){
                      AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                     builder.setTitle("确认" ) ;
+                     builder.setTitle("信息" ) ;
                      builder.setMessage("请输入用户名和密码后再试！" ) ;
                      builder.setPositiveButton("是", null);
                      builder.show();
@@ -133,7 +133,7 @@ public class LoginFragment extends Fragment {
                      }else {
                          option = null;
                          AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                         builder.setTitle("确认" ) ;
+                         builder.setTitle("信息" ) ;
                          builder.setMessage("用户名或密码错误！" ) ;
                          builder.setPositiveButton("是", null);
                          builder.show();

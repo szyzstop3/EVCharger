@@ -140,7 +140,7 @@ public class RegisterFragment extends Fragment {
                 String phon = ""+Phon.getText();
                 if(name.equals("")||name==""||pwd.equals("")||pwd==""||phon.equals("")||phon==""){
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setTitle("确认" ) ;
+                    builder.setTitle("信息" ) ;
                     builder.setMessage("请确认输入的信息准确无误后再提交" ) ;
                     builder.setPositiveButton("是", null);
                     builder.show();
@@ -158,12 +158,12 @@ public class RegisterFragment extends Fragment {
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                             if(option){
-                                builder.setTitle("确认" ) ;
+                                builder.setTitle("信息" ) ;
                                 builder.setMessage("恭喜注册成功！" ) ;
                                 builder.setPositiveButton("是", null);
                             }
                             else {
-                                builder.setTitle("确认" ) ;
+                                builder.setTitle("信息" ) ;
                                 builder.setMessage("数据上传失败！" ) ;
                                 builder.setPositiveButton("是" ,  null );
                             }
