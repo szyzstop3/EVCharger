@@ -97,6 +97,12 @@ public class RegisterFragment extends Fragment {
         }
     }
 
+    public static boolean isMobileNO(String mobiles) {
+        // "[1]"代表第1位为数字1，"[3578]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位
+        String telRegex = "[1][3578]\\d{9}";
+        return mobiles.matches(telRegex);
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -145,34 +151,44 @@ public class RegisterFragment extends Fragment {
                     builder.setPositiveButton("是", null);
                     builder.show();
                 }else {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Looper.prepare();
-                            User user = new User();
-                            user.setName(""+Name.getText());
-                            user.setPassword(""+Pwd.getText());
-                            user.setPhone(""+Phon.getText());
-                            user.setSex(Integer.parseInt(Ssex));
-                            Boolean option =  new Userimpl().InsertUser(user);
+                    if(!isMobileNO(phon)){
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setTitle("信息" ) ;
+                        builder.setMessage("请确认输入的是正确的手机号后重新输入" ) ;
+                        builder.setPositiveButton("是", null);
+                        builder.show();
+                    }else{
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Looper.prepare();
+                                User user = new User();
+                                user.setName(""+Name.getText());
+                                user.setPassword(""+Pwd.getText());
+                                user.setPhone(""+Phon.getText());
+                                user.setSex(Integer.parseInt(Ssex));
+                                Boolean option =  new Userimpl().InsertUser(user);
 
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                            if(option){
-                                builder.setTitle("信息" ) ;
-                                builder.setMessage("恭喜注册成功！" ) ;
-                                builder.setPositiveButton("是", null);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                if(option){
+                                    builder.setTitle("信息" ) ;
+                                    builder.setMessage("恭喜注册成功！" ) ;
+                                    builder.setPositiveButton("是", null);
+                                }
+                                else {
+                                    builder.setTitle("信息" ) ;
+                                    builder.setMessage("数据上传失败！" ) ;
+                                    builder.setPositiveButton("是" ,  null );
+                                }
+                                builder.show();
+                                NavController controller= Navigation.findNavController(getView());
+                                controller.navigate(R.id.action_registerFragment_to_loginFragment);
+                                Looper.loop();
                             }
-                            else {
-                                builder.setTitle("信息" ) ;
-                                builder.setMessage("数据上传失败！" ) ;
-                                builder.setPositiveButton("是" ,  null );
-                            }
-                            builder.show();
-                            NavController controller= Navigation.findNavController(getView());
-                            controller.navigate(R.id.action_registerFragment_to_loginFragment);
-                            Looper.loop();
-                        }
-                    }).start();
+                        }).start();
+                    }
+
+
                 }
 
 
