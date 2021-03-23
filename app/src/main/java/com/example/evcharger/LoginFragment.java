@@ -134,7 +134,7 @@ public class LoginFragment extends Fragment {
                          option = null;
                          AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                          builder.setTitle("确认" ) ;
-                         builder.setMessage("请使用正确的用户名和密码再次尝试！" ) ;
+                         builder.setMessage("用户名或密码错误！" ) ;
                          builder.setPositiveButton("是", null);
                          builder.show();
                      }
