@@ -57,7 +57,7 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="GnRR0n4GkfqTPhw7z8AO8aPTZ6WGrmVG" />
+            android:value="tZyKhyERzVN2wwdfBLGGs0PEGiGA4IXc" />
 
 
         <activity android:name=".MainActivity">

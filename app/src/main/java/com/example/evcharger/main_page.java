@@ -1,17 +1,24 @@
 package com.example.evcharger;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.evcharger.SQLite.MySQliteHelper;
 import com.huawei.hms.hmsscankit.ScanUtil;
 
 
@@ -21,6 +28,10 @@ import com.huawei.hms.hmsscankit.ScanUtil;
  * create an instance of this fragment.
  */
 public class main_page extends Fragment {
+
+
+
+    private SQLiteOpenHelper litedb;
     private final Integer REQUEST_CODE_SCAN_ONE = 100;
     private Integer CAMERA_REQ_CODE = 100;
     // TODO: Rename parameter arguments, choose names that match
@@ -31,6 +42,11 @@ public class main_page extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+
+
+
 
     public main_page() {
         // Required empty public constructor
@@ -68,6 +84,30 @@ public class main_page extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
+        Log.d("Mainpage","name1");
+        litedb = new MySQliteHelper(getContext(), "User", null, 1);
+        SQLiteDatabase db = litedb.getWritableDatabase();
+        Cursor cursor = db.query("User", null, null, null, null, null, null);
+        String name = null;
+        if (cursor.moveToFirst()) {
+            do {
+                name = cursor.getString(cursor.getColumnIndex("username"));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        Log.d("Mainpage",name);
+        builder.setTitle("信息");
+        builder.setMessage("欢迎！" + name);
+        builder.setPositiveButton("是", null);
+        builder.show();
+
+
+
         getView().findViewById(R.id.g1).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_main_page_to_payFragment));
 
         getView().findViewById(R.id.floatingActionButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.setFragment));
@@ -81,6 +121,31 @@ public class main_page extends Fragment {
                 //CAMERA_REQ_CODE为用户自定义，用于接收权限校验结果
                 main_page.this.requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, CAMERA_REQ_CODE);
                 viewById.setText("99启动");
+            }
+        });
+
+        getView().findViewById(R.id.user).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Mainpage","name1");
+                litedb = new MySQliteHelper(getContext(), "User", null, 1);
+                SQLiteDatabase db = litedb.getWritableDatabase();
+                Cursor cursor = db.query("User", null, null, null, null, null, null);
+                String name = null;
+                if (cursor.moveToFirst()) {
+                    do {
+                        name = cursor.getString(cursor.getColumnIndex("username"));
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
+                db.close();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                Log.d("Mainpage",name);
+                builder.setTitle("信息");
+                builder.setMessage("欢迎！" + name);
+                builder.setPositiveButton("是", null);
+                builder.show();
             }
         });
 

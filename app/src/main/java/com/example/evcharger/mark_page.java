@@ -1,11 +1,20 @@
 package com.example.evcharger;
 
+import android.app.AlertDialog;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.evcharger.SQLite.MySQliteHelper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -13,6 +22,7 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class mark_page extends Fragment {
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,6 +54,7 @@ public class mark_page extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

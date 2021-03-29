@@ -1,8 +1,13 @@
 package com.example.evcharger;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +20,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.evcharger.DAO.impl.Userimpl;
+import com.example.evcharger.SQLite.MySQliteHelper;
 import com.example.evcharger.vo.User;
 
 /**
@@ -23,7 +29,9 @@ import com.example.evcharger.vo.User;
  * create an instance of this fragment.
  */
 public class LoginFragment extends Fragment {
-    Boolean option;
+    private Boolean option;
+    private SQLiteOpenHelper litedb;
+    private SQLiteDatabase db;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,6 +83,22 @@ public class LoginFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        litedb = new MySQliteHelper(getContext(), "User", null, 1);
+        db = litedb.getWritableDatabase();
+        Cursor cursor = db.query("User", null, null, null, null, null, null);
+        String name = null;
+        if (cursor.moveToFirst()) {
+            do {
+                name = cursor.getString(cursor.getColumnIndex("username"));
+            } while (cursor.moveToNext());
+            if(name!=null){
+                NavController NC = Navigation.findNavController(getView());
+                NC.navigate(R.id.action_loginFragment_to_main_page);
+            }
+        }
+        cursor.close();
+        db.close();
 
         Button B1;
         B1 = getView().findViewById(R.id.button3);
@@ -128,8 +152,13 @@ public class LoginFragment extends Fragment {
                      if(option){
                          option = null;
                          NavController NC = Navigation.findNavController(view);
+                         litedb = new MySQliteHelper(getContext(),"User",null,1);
+                         db = litedb.getWritableDatabase();
+                         ContentValues contentValues = new ContentValues();
+                         contentValues.put("username",name);
+                         contentValues.put("pwd",pwd);
+                         db.insert("User",null,contentValues);
                          NC.navigate(R.id.action_loginFragment_to_main_page);
-
                      }else {
                          option = null;
                          AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

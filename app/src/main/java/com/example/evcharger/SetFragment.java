@@ -1,5 +1,7 @@
 package com.example.evcharger;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +9,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.example.evcharger.SQLite.MySQliteHelper;
+
+import java.io.File;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +22,8 @@ import androidx.navigation.Navigation;
  * create an instance of this fragment.
  */
 public class SetFragment extends Fragment {
+    private SQLiteOpenHelper litedb;
+    private SQLiteDatabase db;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,8 +75,18 @@ public class SetFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getView().findViewById(R.id.button14).
-                setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_setFragment_to_loginFragment));
+        getView().findViewById(R.id.button14).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //删除数据
+                File dbFile = new File("/data/data/com.example.evcharger/databases/User");
+                dbFile.delete();
+
+                NavController NC = Navigation.findNavController(getView());
+                NC.navigate(R.id.action_setFragment_to_loginFragment);
+            }
+        });
         getView().findViewById(R.id.button12).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_setFragment_to_customerService_page));
     }
 }
