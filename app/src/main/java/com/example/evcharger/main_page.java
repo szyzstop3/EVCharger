@@ -99,12 +99,14 @@ public class main_page extends Fragment {
         cursor.close();
         db.close();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        Log.d("Mainpage",name);
-        builder.setTitle("信息");
-        builder.setMessage("欢迎！" + name);
-        builder.setPositiveButton("是", null);
-        builder.show();
+
+        Toast.makeText(getContext(), "欢迎回来 "+name, Toast.LENGTH_LONG).show();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//        Log.d("Mainpage",name);
+//        builder.setTitle("信息");
+//        builder.setMessage("欢迎！" + name);
+//        builder.setPositiveButton("是", null);
+//        builder.show();
 
 
 
@@ -127,7 +129,7 @@ public class main_page extends Fragment {
         getView().findViewById(R.id.user).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Mainpage","name1");
+//                Log.d("Mainpage","name1");
                 litedb = new MySQliteHelper(getContext(), "User", null, 1);
                 SQLiteDatabase db = litedb.getWritableDatabase();
                 Cursor cursor = db.query("User", null, null, null, null, null, null);
@@ -140,12 +142,13 @@ public class main_page extends Fragment {
                 cursor.close();
                 db.close();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                Log.d("Mainpage",name);
-                builder.setTitle("信息");
-                builder.setMessage("欢迎！" + name);
-                builder.setPositiveButton("是", null);
-                builder.show();
+                Toast.makeText(getContext(), "你好！ "+name, Toast.LENGTH_LONG).show();
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                Log.d("Mainpage",name);
+//                builder.setTitle("信息");
+//                builder.setMessage("欢迎！" + name);
+//                builder.setPositiveButton("是", null);
+//                builder.show();
             }
         });
 
