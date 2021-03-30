@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void setInterception(boolean isInterception) {
+
         this.isInterception = isInterception;
     }
 
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("testvalue",obj.getOriginalValue());
                 //展示解码结果
-                Navigation.findNavController(viewById).navigate(R.id.action_main_page_to_blankFragment_test,bundle);
+                Navigation.findNavController(viewById).navigate(R.id.action_main_page_to_charge_page,bundle);
 //                TextView viewById1 = findViewById(R.id.textView10);
 //                viewById1.setText(obj.getOriginalValue());
             }

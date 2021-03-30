@@ -77,11 +77,6 @@
             android:id="@+id/action_main_page_to_blankFragment_test"
             app:destination="@id/blankFragment_test" />
         <action
-            android:id="@+id/action_main_page_to_payFragment"
-            app:destination="@id/payFragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim"
-            app:exitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
             android:id="@+id/action_main_page_to_charge_page"
             app:destination="@id/charge_page" />
     </fragment>
@@ -112,6 +107,10 @@
     <fragment
         android:id="@+id/charge_page"
         android:name="com.example.evcharger.charge_page"
-        android:label="charge_page" />
+        android:label="charge_page" >
+        <action
+            android:id="@+id/action_charge_page_to_payFragment"
+            app:destination="@id/payFragment" />
+    </fragment>
 
 </navigation>

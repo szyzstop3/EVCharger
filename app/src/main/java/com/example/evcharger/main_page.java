@@ -122,7 +122,6 @@ public class main_page extends Fragment {
 
 
 
-        getView().findViewById(R.id.g1).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_main_page_to_payFragment));
 
         getView().findViewById(R.id.floatingActionButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.setFragment));
         getView().findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
