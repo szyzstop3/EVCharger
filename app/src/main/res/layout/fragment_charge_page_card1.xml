@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="#42D5D1"
+                android:clickable="true"
                 android:text="立即结算"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />

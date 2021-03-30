@@ -2,7 +2,9 @@ package com.example.evcharger;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +46,12 @@ public class judge_page extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getView().findViewById(R.id.button5).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_judge_page_to_main_page));
     }
 
     @Override

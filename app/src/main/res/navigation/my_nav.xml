@@ -93,7 +93,11 @@
         android:id="@+id/judge_page"
         android:name="com.example.evcharger.judge_page"
         android:label="fragment_judge_page"
-        tools:layout="@layout/fragment_judge_page" />
+        tools:layout="@layout/fragment_judge_page" >
+        <action
+            android:id="@+id/action_judge_page_to_main_page"
+            app:destination="@id/main_page" />
+    </fragment>
     <fragment
         android:id="@+id/payFragment"
         android:name="com.example.evcharger.PayFragment"

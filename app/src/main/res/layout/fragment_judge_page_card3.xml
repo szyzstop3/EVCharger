@@ -85,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_circle_shape"
+                android:clickable="true"
                 android:fontFamily="sans-serif-medium"
                 android:text="提交评价"
                 android:textColor="#FFFFFF"
