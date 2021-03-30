@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     //双击退出程序
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

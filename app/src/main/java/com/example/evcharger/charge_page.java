@@ -71,8 +71,7 @@ public class charge_page extends Fragment {
         if(bundle != null)
         {
             String testvalue = bundle.getString("testvalue");
-
-            TextView tvSub = getView().findViewById(R.id.textView10);
+            TextView tvSub = getView().findViewById(R.id.textView30);
             tvSub.setText(testvalue);
         }
     }
