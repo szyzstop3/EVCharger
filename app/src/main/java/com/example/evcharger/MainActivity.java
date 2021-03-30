@@ -1,5 +1,8 @@
 package com.example.evcharger;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
 
 import com.example.evcharger.SQLite.MySQliteHelper;
@@ -19,12 +23,20 @@ import com.huawei.hms.ml.scan.HmsScan;
 public class MainActivity extends AppCompatActivity {
     private final Integer REQUEST_CODE_SCAN_ONE = 100;
     private long mExitTime;
+    private boolean isInterception = false;
+
+
+    public void setInterception(boolean isInterception) {
+        this.isInterception = isInterception;
+    }
+
+
 
 
     //双击退出程序
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK&&isInterception==true) {
             if ((System.currentTimeMillis() - mExitTime) > 2000) {
                 Object mHelperUtils;
                 Toast.makeText(this, "再按一次退出APP", Toast.LENGTH_SHORT).show();

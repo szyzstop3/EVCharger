@@ -11,4 +11,5 @@ public class Pay_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_page);
     }
+
 }
