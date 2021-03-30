@@ -75,20 +75,20 @@ public class Userimpl implements UserDAO {
             UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params,"UTF-8");
             httpPost.setEntity(entity);
             HttpResponse httpResponse =  httpClient.execute(httpPost);
-            Log.d("mytest",String.valueOf(httpResponse.getStatusLine().getStatusCode()));
+            Log.d("LoginUser",String.valueOf(httpResponse.getStatusLine().getStatusCode()));
             //if (httpResponse.getStatusLine().getStatusCode() == 200) {
                 HttpEntity entity2 = httpResponse.getEntity();
                 InputStream in = entity2.getContent();
                 BufferedReader reader = new BufferedReader(
                         new InputStreamReader(in));
                 String line = reader.readLine();
-                Log.d("mytest","line");
-                Log.d("mytest",line);
+                Log.d("LoginUser","line");
+                Log.d("LoginUser",line);
                 if(line.equals("true")){
-                    Log.d("mytest","1");
+                    Log.d("LoginUser","1");
                     r = true;
                 }else {
-                    Log.d("mytest","2");
+                    Log.d("LoginUser","2");
                     r = false;
                 }
 //
@@ -98,7 +98,40 @@ public class Userimpl implements UserDAO {
         }catch(Exception e){
             e.printStackTrace();
         }
-        Log.d("mytest","r="+r);
+        Log.d("LoginUser","r="+r);
+        return r;
+    }
+
+    @Override
+    public boolean UserEX(User user) {
+        boolean r = false;
+        try{
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost("http://8.140.120.98:8080/EVBackEnd-1.0-SNAPSHOT/userex");
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("name", user.getName()));
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params,"UTF-8");
+            httpPost.setEntity(entity);
+            HttpResponse httpResponse =  httpClient.execute(httpPost);
+            Log.d("UserEX",String.valueOf(httpResponse.getStatusLine().getStatusCode()));
+            //if (httpResponse.getStatusLine().getStatusCode() == 200) {
+            HttpEntity entity2 = httpResponse.getEntity();
+            InputStream in = entity2.getContent();
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(in));
+            String line = reader.readLine();
+            Log.d("UserEX","line");
+            Log.d("UserEX",line);
+            if(line.equals("true")){
+                Log.d("UserEX","1");
+                r = true;
+            }else {
+                Log.d("UserEX","2");
+                r = false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return r;
     }
 

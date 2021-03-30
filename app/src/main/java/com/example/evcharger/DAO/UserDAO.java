@@ -6,4 +6,5 @@ public interface UserDAO {
 
     public boolean InsertUser(User user);
     public boolean LoginUser(User user);
+    public boolean UserEX(User user);
 }
