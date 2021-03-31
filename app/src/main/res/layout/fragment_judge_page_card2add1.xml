@@ -78,8 +78,8 @@
 
             <TextView
                 android:id="@+id/textView14"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:gravity="center"
                 android:text="时间："
@@ -92,8 +92,8 @@
 
             <TextView
                 android:id="@+id/textView15"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:gravity="center"
                 android:text="地点："
@@ -106,8 +106,8 @@
 
             <TextView
                 android:id="@+id/textView16"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:gravity="center"
                 android:text="订单金额："
@@ -131,7 +131,7 @@
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
                 android:gravity="center_vertical"
                 android:text="2020-1-16 07:32:06-09:45:23"
@@ -143,7 +143,7 @@
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
                 android:gravity="center_vertical"
                 android:text="北京邮电大学沙河校区"
