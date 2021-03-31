@@ -12,6 +12,7 @@ public class MySQliteHelper extends SQLiteOpenHelper {
             "userid integer primary key autoincrement," +
             "username varchar(36)," +
             "pwd varchar(36))";
+
     private Context mcontext;
     public MySQliteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
