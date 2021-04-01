@@ -35,8 +35,8 @@
 
         <TextView
             android:id="@+id/textView23"
-            android:layout_width="151dp"
-            android:layout_height="46dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:text="充电状态"
             android:textAlignment="center"
@@ -49,9 +49,10 @@
 
         <TextView
             android:id="@+id/textView24"
-            android:layout_width="118dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="204dp"
+            android:layout_marginEnd="30dp"
             android:text="86%"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -75,8 +76,8 @@
 
         <TextView
             android:id="@+id/textView27"
-            android:layout_width="160dp"
-            android:layout_height="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="284dp"
             android:text="已充电量：10.3度"
             android:textAlignment="center"
@@ -87,8 +88,8 @@
 
         <TextView
             android:id="@+id/textView28"
-            android:layout_width="160dp"
-            android:layout_height="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="312dp"
             android:text="预估价格:30.6元"
             android:textAlignment="center"
@@ -99,8 +100,8 @@
 
         <TextView
             android:id="@+id/textView29"
-            android:layout_width="160dp"
-            android:layout_height="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="340dp"
             android:text="距离充满时间：35分钟"
             android:textAlignment="center"
@@ -136,9 +137,10 @@
 
         <TextView
             android:id="@+id/textView31"
-            android:layout_width="63dp"
-            android:layout_height="19dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="348dp"
+            android:layout_marginEnd="20dp"
             android:text="快充桩"
             android:textAlignment="center"
             android:textStyle="bold"

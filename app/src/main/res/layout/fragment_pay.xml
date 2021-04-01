@@ -60,8 +60,8 @@
 
         <TextView
             android:id="@+id/textView14"
-            android:layout_width="350dp"
-            android:layout_height="36dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="订单日期及时长：XXXX-XX-XX XX:XX -XX:XX"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.72" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline22"
@@ -104,7 +104,7 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         app:cardBackgroundColor="@color/colorAccent"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,6 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="如果对订单有疑问，请及时联系客服处理"
+                android:textColor="#000000"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -266,15 +267,15 @@
         app:layout_constraintVertical_bias="0.327" />
 
 
-
     <TextView
         android:id="@+id/textView20"
-        android:layout_width="344dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:clickable="true"
-        android:text="请选择其他支付方式"
+        android:text="其他支付方式"
         android:textAlignment="textStart"
+        android:textColor="#4F000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline21"
@@ -288,6 +289,7 @@
         android:id="@+id/cardView6"
         android:layout_width="0dp"
         android:layout_height="94dp"
+        app:cardCornerRadius="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -338,20 +340,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="2dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="38dp"
+                android:layout_marginEnd="39dp"
+                android:background="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView26"
+                app:layout_constraintStart_toEndOf="@+id/textView23"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="374dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
         android:text="我同意“桩桩皆电”支付守则，取消政策和退款政策。我也同意支付以下所示的总金额（含服务费)。  "
         android:textColor="#72000000"
         app:layout_constraintBottom_toTopOf="@+id/guideline23"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline21" />
-
+        app:layout_constraintTop_toTopOf="@+id/guideline21"
+        app:layout_constraintVertical_bias="0.478" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

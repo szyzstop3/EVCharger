@@ -24,11 +24,20 @@ public class MainActivity extends AppCompatActivity {
     private final Integer REQUEST_CODE_SCAN_ONE = 100;
     private long mExitTime;
     private boolean isInterception = false;
+    private boolean isFirstIn = true;
 
 
     public void setInterception(boolean isInterception) {
-
         this.isInterception = isInterception;
+    }
+
+    public boolean isFirstIn(){
+        if(this.isFirstIn){
+            this.isFirstIn = false;
+            return true;
+        }else {
+            return false;
+        }
     }
 
 

@@ -111,8 +111,9 @@ public class main_page extends Fragment {
         cursor.close();
         db.close();
 
-
-        Toast.makeText(getContext(), "欢迎回来 "+name, Toast.LENGTH_LONG).show();
+        if(((MainActivity)getActivity()).isFirstIn()){
+            Toast.makeText(getContext(), "欢迎回来 "+name, Toast.LENGTH_LONG).show();
+        }
 //        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //        Log.d("Mainpage",name);
 //        builder.setTitle("信息");

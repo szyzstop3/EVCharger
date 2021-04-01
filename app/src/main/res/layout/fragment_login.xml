@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#009688">
+        android:background="#42d5d1">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -44,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/EVCharger"
+            android:textColor="#673AB7"
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -76,16 +77,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
-        <Button
-            android:id="@+id/button2"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#D34CAF50"
-            android:text="登录"
+            app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+            app:layout_constraintTop_toTopOf="@+id/guideline3">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ff9800"
+                android:text="登录"
+                android:textColor="#EFEFEF"
+                android:textSize="24sp" />
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/button3"

@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EE327EB1">
+        android:background="#42d5d1">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="注册"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
@@ -99,29 +99,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
-        <Button
-            android:id="@+id/button"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#CB7BD68E"
-            android:text="确认"
+            app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline8" />
+            app:layout_constraintTop_toTopOf="@+id/guideline8">
 
-        <Button
-            android:id="@+id/button4"
-            style="@android:style/Widget.Material.Light.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#DF22E5FF"
-            android:text="返回"
-            app:layout_constraintBottom_toTopOf="@+id/guideline10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline10"
-            tools:targetApi="lollipop" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ff9800"
+                android:text="确认"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+        </androidx.cardview.widget.CardView>
 
         <EditText
             android:id="@+id/editTextTextPersonName5"
@@ -174,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="账号(昵称)"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
@@ -187,7 +183,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="性别"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline16"
@@ -200,7 +196,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="新密码"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline6"
@@ -213,13 +209,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="手机"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline12"
             app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline10">
+
+            <Button
+                android:id="@+id/button4"
+                style="@android:style/Widget.Material.Light.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#707677"
+                android:text="返回"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                tools:targetApi="lollipop" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
