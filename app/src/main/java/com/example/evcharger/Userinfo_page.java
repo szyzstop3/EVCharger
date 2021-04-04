@@ -1,22 +1,32 @@
 package com.example.evcharger;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.evcharger.SQLite.MySQliteHelper;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment_test#newInstance} factory method to
+ * Use the {@link Userinfo_page#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment_test extends Fragment {
+public class Userinfo_page extends Fragment {
+    private SQLiteOpenHelper litedb;
+    private SQLiteDatabase db;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +43,7 @@ public class BlankFragment_test extends Fragment {
         ((MainActivity) getActivity()).setInterception(false);
     }
 
-    public BlankFragment_test() {
+    public Userinfo_page() {
         // Required empty public constructor
     }
 
@@ -43,11 +53,11 @@ public class BlankFragment_test extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment_test.
+     * @return A new instance of fragment Userinfo_page.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment_test newInstance(String param1, String param2) {
-        BlankFragment_test fragment = new BlankFragment_test();
+    public static Userinfo_page newInstance(String param1, String param2) {
+        Userinfo_page fragment = new Userinfo_page();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,20 +77,35 @@ public class BlankFragment_test extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Bundle bundle = getArguments();
-        if(bundle != null)
-        {
-            String testvalue = bundle.getString("testvalue");
-
-            TextView tvSub = getView().findViewById(R.id.textView10);
-            tvSub.setText(testvalue);
+        litedb = new MySQliteHelper(getContext(), "User", null, 1);
+        SQLiteDatabase db = litedb.getWritableDatabase();
+        Cursor cursor = db.query("User", null, null, null, null, null, null);
+        String name = null;
+        if (cursor.moveToFirst()) {
+            do {
+                name = cursor.getString(cursor.getColumnIndex("username"));
+            } while (cursor.moveToNext());
         }
+        cursor.close();
+        db.close();
+
+        TextView textView = (TextView)getView().findViewById(R.id.textView11);
+        textView.setText(name);
+
+        getView().findViewById(R.id.imageView9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(getView());
+                navController.navigate(R.id.action_userinfo_page_to_setFragment);
+            }
+        });
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank_test, container, false);
+        return inflater.inflate(R.layout.fragment_userinfo_page, container, false);
     }
 }

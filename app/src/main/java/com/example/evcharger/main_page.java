@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.evcharger.SQLite.MySQliteHelper;
@@ -124,7 +125,7 @@ public class main_page extends Fragment {
 
 
 
-        getView().findViewById(R.id.floatingActionButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.setFragment));
+//        getView().findViewById(R.id.floatingActionButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.setFragment));
         getView().findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
             //“QRCODE_SCAN_TYPE”和“DATAMATRIX_SCAN_TYPE”表示只扫描QR和Data Matrix的码
             //HmsScanAnalyzerOptions options = new HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.QRCODE_SCAN_TYPE , HmsScan.DATAMATRIX_SCAN_TYPE).create();
@@ -142,19 +143,20 @@ public class main_page extends Fragment {
             @Override
             public void onClick(View view) {
 //                Log.d("Mainpage","name1");
-                litedb = new MySQliteHelper(getContext(), "User", null, 1);
-                SQLiteDatabase db = litedb.getWritableDatabase();
-                Cursor cursor = db.query("User", null, null, null, null, null, null);
-                String name = null;
-                if (cursor.moveToFirst()) {
-                    do {
-                        name = cursor.getString(cursor.getColumnIndex("username"));
-                    } while (cursor.moveToNext());
-                }
-                cursor.close();
-                db.close();
-
-                Toast.makeText(getContext(), "你好！ "+name, Toast.LENGTH_LONG).show();
+//                litedb = new MySQliteHelper(getContext(), "User", null, 1);
+//                SQLiteDatabase db = litedb.getWritableDatabase();
+//                Cursor cursor = db.query("User", null, null, null, null, null, null);
+//                String name = null;
+//                if (cursor.moveToFirst()) {
+//                    do {
+//                        name = cursor.getString(cursor.getColumnIndex("username"));
+//                    } while (cursor.moveToNext());
+//                }
+//                cursor.close();
+//                db.close();
+//                Toast.makeText(getContext(), "你好！ "+name, Toast.LENGTH_LONG).show();
+                NavController controller = Navigation.findNavController(getView());
+                controller.navigate(R.id.action_main_page_to_userinfo_page);
 //                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //                Log.d("Mainpage",name);
 //                builder.setTitle("信息");

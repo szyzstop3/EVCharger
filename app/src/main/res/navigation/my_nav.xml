@@ -14,9 +14,6 @@
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_MNVFragment"
-            app:destination="@id/MNVFragment" />
-        <action
             android:id="@+id/action_loginFragment_to_main_page"
             app:destination="@id/main_page" />
     </fragment>
@@ -28,21 +25,6 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/MNVFragment"
-        android:name="com.example.evcharger.MNVFragment"
-        android:label="fragment_m_n_v"
-        tools:layout="@layout/fragment_m_n_v" >
-        <action
-            android:id="@+id/action_MNVFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_MNVFragment_to_setFragment"
-            app:destination="@id/setFragment" />
-        <action
-            android:id="@+id/action_MNVFragment_to_mapsFragment"
-            app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
         android:id="@+id/setFragment"
@@ -59,11 +41,6 @@
             app:exitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
-        android:id="@+id/mapsFragment"
-        android:name="com.example.evcharger.MapsFragment"
-        android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" />
-    <fragment
         android:id="@+id/main_page"
         android:name="com.example.evcharger.main_page"
         android:label="fragment_main_page"
@@ -74,17 +51,14 @@
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_main_page_to_blankFragment_test"
-            app:destination="@id/blankFragment_test" />
-        <action
             android:id="@+id/action_main_page_to_charge_page"
             app:destination="@id/charge_page" />
+        <action
+            android:id="@+id/action_main_page_to_userinfo_page"
+            app:destination="@id/userinfo_page"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
-    <fragment
-        android:id="@+id/blankFragment_test"
-        android:name="com.example.evcharger.BlankFragment_test"
-        android:label="fragment_blank_test"
-        tools:layout="@layout/fragment_blank_test" />
     <activity
         android:id="@+id/customerService_page"
         android:name="com.example.evcharger.CustomerService_page"
@@ -115,6 +89,16 @@
         <action
             android:id="@+id/action_charge_page_to_payFragment"
             app:destination="@id/payFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userinfo_page"
+        android:name="com.example.evcharger.Userinfo_page"
+        android:label="Userinfo_page" >
+        <action
+            android:id="@+id/action_userinfo_page_to_setFragment"
+            app:destination="@id/setFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
 </navigation>
