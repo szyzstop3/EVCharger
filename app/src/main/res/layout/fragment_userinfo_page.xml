@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="209dp" />
+            app:layout_constraintGuide_percent="0.2872777" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -66,6 +66,34 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.13" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.37" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.63" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.87" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline19"
@@ -79,14 +107,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.66757864" />
+                app:layout_constraintGuide_percent="0.62" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.88" />
+                app:layout_constraintGuide_percent="0.86" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline31"
@@ -94,6 +122,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.79" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.55" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline22"
@@ -119,125 +154,118 @@
                 android:id="@+id/button22"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="30dp"
                 android:foreground="@drawable/person_filled"
                 app:layout_constraintBottom_toTopOf="@+id/guideline31"
-                app:layout_constraintStart_toEndOf="@+id/button20"
+                app:layout_constraintEnd_toStartOf="@+id/guideline17"
+                app:layout_constraintStart_toStartOf="@+id/guideline17"
                 app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
             <Button
                 android:id="@+id/button18"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginEnd="16dp"
                 android:foreground="@android:drawable/ic_menu_recent_history"
-                app:layout_constraintBottom_toTopOf="@+id/guideline23"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline22" />
+                app:layout_constraintBottom_toTopOf="@+id/guideline33"
+                app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                app:layout_constraintStart_toStartOf="@+id/guideline32"
+                app:layout_constraintTop_toTopOf="@+id/guideline33" />
 
             <Button
                 android:id="@+id/button21"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="29dp"
-                android:layout_marginEnd="30dp"
                 android:foreground="@drawable/ic_baseline_youtube_searched_for_24"
-                app:layout_constraintBottom_toTopOf="@+id/guideline23"
-                app:layout_constraintEnd_toStartOf="@+id/button17"
-                app:layout_constraintStart_toEndOf="@+id/button16"
-                app:layout_constraintTop_toTopOf="@+id/guideline22" />
+                app:layout_constraintBottom_toTopOf="@+id/guideline33"
+                app:layout_constraintEnd_toStartOf="@+id/guideline15"
+                app:layout_constraintStart_toStartOf="@+id/guideline15"
+                app:layout_constraintTop_toTopOf="@+id/guideline33" />
 
             <Button
                 android:id="@+id/button20"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="29dp"
                 android:foreground="@android:drawable/ic_input_add"
                 app:layout_constraintBottom_toTopOf="@+id/guideline31"
-                app:layout_constraintStart_toEndOf="@+id/button19"
+                app:layout_constraintEnd_toStartOf="@+id/guideline15"
+                app:layout_constraintStart_toStartOf="@+id/guideline15"
                 app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
             <Button
                 android:id="@+id/button16"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="20dp"
                 android:foreground="@drawable/search_filled"
                 android:shadowColor="#03DAC5"
-                app:layout_constraintBottom_toTopOf="@+id/guideline23"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline22" />
+                app:layout_constraintBottom_toTopOf="@+id/guideline33"
+                app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                app:layout_constraintStart_toStartOf="@+id/guideline14"
+                app:layout_constraintTop_toTopOf="@+id/guideline33" />
 
             <Button
                 android:id="@+id/button5"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="12dp"
                 android:foreground="@android:drawable/ic_menu_call"
                 app:layout_constraintBottom_toTopOf="@+id/guideline31"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/button22"
+                app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                app:layout_constraintStart_toStartOf="@+id/guideline32"
                 app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
             <Button
                 android:id="@+id/button17"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginEnd="36dp"
                 android:foreground="@drawable/ic_baseline_bookmarks_24"
-                app:layout_constraintBottom_toTopOf="@+id/guideline23"
-                app:layout_constraintEnd_toStartOf="@+id/button18"
-                app:layout_constraintTop_toTopOf="@+id/guideline22" />
+                app:layout_constraintBottom_toTopOf="@+id/guideline33"
+                app:layout_constraintEnd_toStartOf="@+id/guideline17"
+                app:layout_constraintStart_toStartOf="@+id/guideline17"
+                app:layout_constraintTop_toTopOf="@+id/guideline33" />
 
             <Button
                 android:id="@+id/button19"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="20dp"
                 android:foreground="@drawable/search_outline"
                 app:layout_constraintBottom_toTopOf="@+id/guideline31"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                app:layout_constraintStart_toStartOf="@+id/guideline14"
                 app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
                 android:text="我要充电"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline30"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button19" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                app:layout_constraintStart_toStartOf="@+id/guideline14"
+                app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:text="历史订单"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline23"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button18"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                app:layout_constraintStart_toStartOf="@+id/guideline32"
+                app:layout_constraintTop_toTopOf="@+id/guideline23" />
 
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
                 android:text="收藏列表"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline23"
-                app:layout_constraintEnd_toStartOf="@+id/textView25"
-                app:layout_constraintTop_toBottomOf="@+id/button17"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline17"
+                app:layout_constraintStart_toStartOf="@+id/guideline17"
+                app:layout_constraintTop_toTopOf="@+id/guideline23" />
 
             <TextView
                 android:id="@+id/textView27"
@@ -257,74 +285,61 @@
                 android:id="@+id/textView29"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="13dp"
-                android:layout_marginEnd="16dp"
                 android:text="使用列表"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline30"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView30"
-                app:layout_constraintTop_toBottomOf="@+id/button5"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                app:layout_constraintStart_toStartOf="@+id/guideline32"
+                app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
-                android:layout_marginEnd="42dp"
                 android:text="查找桩位"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline23"
-                app:layout_constraintEnd_toStartOf="@+id/textView24"
-                app:layout_constraintHorizontal_bias="0.657"
-                app:layout_constraintStart_toEndOf="@+id/textView16"
-                app:layout_constraintTop_toBottomOf="@+id/button21"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline15"
+                app:layout_constraintStart_toStartOf="@+id/guideline15"
+                app:layout_constraintTop_toTopOf="@+id/guideline23" />
 
             <TextView
                 android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="13dp"
                 android:text="添加新桩"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline30"
-                app:layout_constraintStart_toEndOf="@+id/textView14"
-                app:layout_constraintTop_toBottomOf="@+id/button20"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline15"
+                app:layout_constraintStart_toStartOf="@+id/guideline15"
+                app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:text="预约充电"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline23"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button16"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                app:layout_constraintStart_toStartOf="@+id/guideline14"
+                app:layout_constraintTop_toTopOf="@+id/guideline23" />
 
             <TextView
                 android:id="@+id/textView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="13dp"
                 android:text="客服咨询"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline30"
-                app:layout_constraintStart_toEndOf="@+id/textView28"
-                app:layout_constraintTop_toBottomOf="@+id/button22"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline17"
+                app:layout_constraintStart_toStartOf="@+id/guideline17"
+                app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
             <ImageView
                 android:id="@+id/imageView7"
