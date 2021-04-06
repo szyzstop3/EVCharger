@@ -20,6 +20,7 @@ import com.example.evcharger.SQLite.MySQliteHelper;
 import com.huawei.hms.hmsscankit.ScanUtil;
 import com.huawei.hms.ml.scan.HmsScan;
 
+
 public class MainActivity extends AppCompatActivity {
     private final Integer REQUEST_CODE_SCAN_ONE = 100;
     private long mExitTime;
@@ -29,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void setInterception(boolean isInterception) {
         this.isInterception = isInterception;
+    }
+
+    public void resetFirstIn(){
+        this.isFirstIn = true;
     }
 
     public boolean isFirstIn(){
@@ -63,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
     }
 

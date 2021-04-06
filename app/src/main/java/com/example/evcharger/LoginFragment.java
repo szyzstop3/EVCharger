@@ -33,6 +33,7 @@ public class LoginFragment extends Fragment {
     private Boolean option;
     private SQLiteOpenHelper litedb;
     private SQLiteDatabase db;
+    String userid = null;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +48,7 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((MainActivity) getActivity()).setInterception(true);
+        ((MainActivity) getActivity()).resetFirstIn();
     }
 
     public LoginFragment() {
@@ -128,6 +130,15 @@ public class LoginFragment extends Fragment {
 
                  String name = ""+Name.getText();
                  String pwd = ""+Pwd.getText();
+
+
+
+                User user = new User();
+                user.setName(name);
+                user.setPassword(pwd);
+
+                Userimpl ui =  new Userimpl();
+
                  if(name.isEmpty()||pwd.isEmpty()||name.equals("")||pwd.equals("")){
                      AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                      builder.setTitle("信息" ) ;
@@ -139,10 +150,8 @@ public class LoginFragment extends Fragment {
                          @Override
                          public void run() {
                              Looper.prepare();
-                             User user = new User();
-                             user.setName(name);
-                             user.setPassword(pwd);
-                             Userimpl ui =  new Userimpl();
+
+
                              option = ui.LoginUser(user);
                              System.out.println(option);
                              Looper.loop();
@@ -157,6 +166,7 @@ public class LoginFragment extends Fragment {
                          }
                      }
                      if(option){
+
                          option = null;
                          NavController NC = Navigation.findNavController(view);
                          litedb = new MySQliteHelper(getContext(),"User",null,1);
@@ -164,6 +174,29 @@ public class LoginFragment extends Fragment {
                          ContentValues contentValues = new ContentValues();
                          contentValues.put("username",name);
                          contentValues.put("pwd",pwd);
+
+
+
+
+                             new Thread(new Runnable() {
+                                 @Override
+                                 public void run() {
+                                     Looper.prepare();
+                                     userid = ui.getUserid(user);
+                                     Looper.loop();
+                                 }
+                             }).start();
+
+                         while (userid==null){
+                             try {
+                                 Thread.currentThread().sleep(100);
+                             } catch (InterruptedException e) {
+                                 e.printStackTrace();
+                             }
+                         }
+
+
+                         contentValues.put("userid",userid);
                          db.insert("User",null,contentValues);
                          NC.navigate(R.id.action_loginFragment_to_main_page);
                      }else {

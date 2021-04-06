@@ -136,4 +136,34 @@ public class Userimpl implements UserDAO {
     }
 
 
+
+    @Override
+    public String getUserid(User user) {
+        String string = null;
+
+        try{
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost("http://8.140.120.98:8080/EVBackEnd-1.0-SNAPSHOT/guserid");
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("name", user.getName()));
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params,"UTF-8");
+            httpPost.setEntity(entity);
+            HttpResponse httpResponse =  httpClient.execute(httpPost);
+            Log.d("getUserid",String.valueOf(httpResponse.getStatusLine().getStatusCode()));
+            //if (httpResponse.getStatusLine().getStatusCode() == 200) {
+            HttpEntity entity2 = httpResponse.getEntity();
+            InputStream in = entity2.getContent();
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(in));
+            String line = reader.readLine();
+            Log.d("getUserid","line");
+            Log.d("getUserid",line);
+            string = line;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return string;
+    }
+
+
 }

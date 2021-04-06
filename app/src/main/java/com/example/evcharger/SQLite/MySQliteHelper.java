@@ -9,8 +9,9 @@ import androidx.annotation.Nullable;
 
 public class MySQliteHelper extends SQLiteOpenHelper {
     public static final String CREAT_USERLOGIN = "create table User(" +
-            "userid integer primary key autoincrement," +
+            "id integer primary key autoincrement," +
             "username varchar(36)," +
+            "userid varchar(36)," +
             "pwd varchar(36))";
 
     private Context mcontext;
