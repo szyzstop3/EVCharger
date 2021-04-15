@@ -22,8 +22,21 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MyLocationData;
 import com.example.evcharger.SQLite.MySQliteHelper;
 import com.huawei.hms.hmsscankit.ScanUtil;
+
+import com.baidu.mapapi.map.BaiduMap;
+
+
 
 
 /**
@@ -32,6 +45,9 @@ import com.huawei.hms.hmsscankit.ScanUtil;
  * create an instance of this fragment.
  */
 public class main_page extends Fragment {
+
+//    private map_card.MyLocationListener myListener = new map_card.MyLocationListener();
+
 
 
 
@@ -96,7 +112,36 @@ public class main_page extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //((map_card)getTargetFragment()).locate();
 
+//        getView().findViewById(R.id.findlocation).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getContext(), "开启定位 ", Toast.LENGTH_LONG).show();
+//
+//                //定位初始化
+//                mLocationClient = new LocationClient(getContext());
+//
+//
+////通过LocationClientOption设置LocationClient相关参数
+//                LocationClientOption option = new LocationClientOption();
+//                option.setOpenGps(true); // 打开gps
+//                option.setCoorType("bd09ll"); // 设置坐标类型
+//                option.setScanSpan(1000);
+//
+////设置locationClientOption
+//                mLocationClient.setLocOption(option);
+//
+////注册LocationListener监听器
+//                com.example.evcharger.MyLocationListener myLocationListener = new com.example.evcharger.MyLocationListener();
+//                mLocationClient.registerLocationListener(myLocationListener);
+////开启地图定位图层
+//                mLocationClient.start();
+//                // Inflate the layout for this fragment
+//
+//
+//            }
+//        });
 
 
         Log.d("Mainpage","name1");
@@ -186,11 +231,25 @@ public class main_page extends Fragment {
 
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main_page, container, false);
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        //在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
     }
 
     @Override
