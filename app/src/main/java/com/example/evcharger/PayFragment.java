@@ -1,14 +1,27 @@
 package com.example.evcharger;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.example.evcharger.SQLite.MySQliteHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +29,9 @@ import androidx.navigation.Navigation;
  * create an instance of this fragment.
  */
 public class PayFragment extends Fragment {
+    private SQLiteOpenHelper litedb;
 
+    String time;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,7 +72,68 @@ public class PayFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getView().findViewById(R.id.button21).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_payFragment_to_judge_page));
+
+        litedb = new MySQliteHelper(getContext(), "User", null, 1);
+        SQLiteDatabase db = litedb.getWritableDatabase();
+        Cursor cursor = db.query("User", null, null, null, null, null, null);
+        String name = null;
+        String phone = null;
+        if (cursor.moveToFirst()) {
+            do {
+                name = cursor.getString(cursor.getColumnIndex("username"));
+                phone = cursor.getString(cursor.getColumnIndex("phone"));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        ((TextView)getView().findViewById(R.id.textView11)).setText("姓名："+name);
+        ((TextView)getView().findViewById(R.id.textView12)).setText("手机号："+phone);
+
+        Bundle bundle = getArguments();
+        if(bundle != null)
+        {
+            time=  new SimpleDateFormat("yyyy-MM-dd ").format(Calendar.getInstance().getTime())+
+                " "+bundle.getString("start")+"-"+bundle.getString("end");
+            ((TextView)getView().findViewById(R.id.pay2)).setText("￥"+bundle.getFloat("pay"));
+            ((TextView)getView().findViewById(R.id.pay1)).setText("￥"+bundle.getFloat("pay"));
+            ((TextView)getView().findViewById(R.id.datatime)).setText("充电时间：" +time);
+        }
+
+
+        getView().findViewById(R.id.button21).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CheckBox)getView().findViewById(R.id.checkBox)).isChecked()){
+                    Bundle bundle = new Bundle();
+                    //支付方式
+                    if(((RadioButton)getView().findViewById(R.id.alipay)).isChecked()){
+                        bundle.putString("payoption","Alipay");
+                    }else {
+                        bundle.putString("payoption","Wechatpay");
+                    }
+                    //优惠接口
+                    bundle.putFloat("reduction",15.00f);
+                    bundle.putFloat("pay",getArguments().getFloat("pay"));
+                    bundle.putString("chargerid",getArguments().getString("chargerid"));
+                    bundle.putString("time", time);
+
+//                    Toast.makeText(getContext(),getArguments().getString("chargerid") , Toast.LENGTH_SHORT).show();
+
+
+                    NavController navController = Navigation.findNavController(getView());
+                    navController.navigate(R.id.action_payFragment_to_judge_page,bundle);
+                }else {
+                    Toast.makeText(getContext(), "请同意条款后继续支付", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+            }
+        });
+
+
 
     }
 

@@ -11,10 +11,12 @@ public class Pay_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_page);
-        RadioButton radioButton1 = (RadioButton)this.findViewById(R.id.radioButton);
-        RadioButton radioButton2 = (RadioButton)this.findViewById(R.id.radioButton2);
+        RadioButton radioButton1 = (RadioButton)this.findViewById(R.id.wechatpay);
+        RadioButton radioButton2 = (RadioButton)this.findViewById(R.id.alipay);
 
     }
+
+
 
 
 

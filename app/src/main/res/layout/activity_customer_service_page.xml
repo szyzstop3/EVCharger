@@ -269,7 +269,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline25" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/pay1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:clickable="true"

@@ -59,11 +59,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/datatime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="订单日期及时长：XXXX-XX-XX XX:XX -XX:XX"
+            android:text="订单日期及时长：2021-02-05 13:34-14:20"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -158,11 +158,11 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/pay1"
         android:layout_width="142dp"
         android:layout_height="45dp"
         android:layout_marginEnd="30dp"
-        android:text="￥XX.XX"
+        android:text="￥95.00"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="italic"
@@ -217,7 +217,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline20">
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/alipay"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
             android:layout_marginEnd="20dp"
@@ -225,7 +225,7 @@
             />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/wechatpay"
             android:layout_width="wrap_content"
             android:layout_height="67dp"
             android:layout_marginEnd="20dp"
@@ -303,7 +303,7 @@
             android:background="#42d5d1">
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/pay2"
                 android:layout_width="109dp"
                 android:layout_height="22dp"
                 android:layout_marginEnd="72dp"
@@ -317,7 +317,7 @@
                 app:layout_constraintVertical_bias="0.508" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/chargerstate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="52dp"
@@ -348,8 +348,8 @@
                 android:layout_marginEnd="39dp"
                 android:background="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView26"
-                app:layout_constraintStart_toEndOf="@+id/textView23"
+                app:layout_constraintEnd_toStartOf="@+id/pay2"
+                app:layout_constraintStart_toEndOf="@+id/chargerstate"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -138,12 +138,12 @@ public class Userimpl implements UserDAO {
 
 
     @Override
-    public String getUserid(User user) {
+    public String getUserinfo(User user) {
         String string = null;
 
         try{
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://8.140.120.98:8080/EVBackEnd-1.0-SNAPSHOT/guserid");
+            HttpPost httpPost = new HttpPost("http://8.140.120.98:8080/EVBackEnd-1.0-SNAPSHOT/guserinfo");
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("name", user.getName()));
             UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params,"UTF-8");

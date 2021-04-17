@@ -244,7 +244,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/datatime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="我要充电"
@@ -306,7 +306,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/pay1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="查找桩位"

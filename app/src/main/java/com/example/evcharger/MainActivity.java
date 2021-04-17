@@ -1,43 +1,49 @@
 package com.example.evcharger;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.content.Context;
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.os.Looper;
-import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
 
-import com.baidu.location.BDAbstractLocationListener;
-import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.MyLocationData;
-import com.example.evcharger.SQLite.MySQliteHelper;
+import com.example.evcharger.DAO.impl.Toolimpl;
+import com.example.evcharger.vo.Charger;
 import com.huawei.hms.hmsscankit.ScanUtil;
 import com.huawei.hms.ml.scan.HmsScan;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ *  new Thread(new Runnable() {
+ *                          @Override
+ *                          public void run() {
+ *                              Looper.prepare();
+ *
+ *
+ *                              option = ui.LoginUser(user);
+ *                              System.out.println(option);
+ *                              Looper.loop();
+ *                          }
+ *                      }).start();
+ */
 
 public class MainActivity extends AppCompatActivity {
     private final Integer REQUEST_CODE_SCAN_ONE = 100;
     private long mExitTime;
     private boolean isInterception = false;
     private boolean isFirstIn = true;
+
+    boolean ri;
 
     BaiduMap mBaiduMap = null;
     private MapView mMapView = null;
@@ -93,23 +99,82 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("validCharger","1");
+
         TextView viewById = findViewById(R.id.textView5);
         viewById.setText("4调用回调接口");
         if (resultCode != RESULT_OK || data == null) {
+
             return;
         }
         if (requestCode == REQUEST_CODE_SCAN_ONE) {
+            Log.d("validCharger","100");
             //导入图片扫描返回结果
             HmsScan obj = data.getParcelableExtra(ScanUtil.RESULT);
-            if (obj != null) {
-                Bundle bundle = new Bundle();
-                bundle.putString("testvalue",obj.getOriginalValue());
-                //展示解码结果
-                Navigation.findNavController(viewById).navigate(R.id.action_main_page_to_charge_page,bundle);
+            String scans = obj.getOriginalValue();
+            String[] scnss = scans.split("-");
+            if(scnss.length!=2){
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("信息" ) ;
+                        builder.setMessage("请扫描EVCharger充电桩上的二维码！" ) ;
+                        builder.setPositiveButton("是", null);
+                        builder.show();
+            }else {
+                Charger charger = new Charger();
+                charger.setChargerid(Integer.parseInt(scnss[0]));
+                charger.setCSA(scnss[1]);
+//                Toast.makeText(getContext(),charger.getChargerid() , Toast.LENGTH_SHORT).show();
+
+
+                Log.d("validCharger","1");
+
+                if (obj != null) {
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Looper.prepare();
+
+                            Log.d("validCharger","1");
+                            Toolimpl toolimpl = new Toolimpl();
+
+                            Bundle bundle = new Bundle();
+                            if(toolimpl.validCharger(charger)){
+                                try {
+                                    JSONObject jsonObject = new JSONObject(toolimpl.getCharger(charger));
+                                    bundle.putString("chargername",jsonObject.getString("chargername"));
+                                    bundle.putString("longitude",jsonObject.getString("longitude"));
+                                    bundle.putString("latitude",jsonObject.getString("latitude"));
+                                    bundle.putString("state",jsonObject.getString("state"));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                                bundle.putString("chargerid",""+charger.getChargerid());
+                                Log.d("validCharger","chargerid "+charger.getChargerid());
+                                //展示解码结果
+                                Navigation.findNavController(viewById).navigate(R.id.action_main_page_to_charge_page,bundle);
 //                TextView viewById1 = findViewById(R.id.textView10);
 //                viewById1.setText(obj.getOriginalValue());
+
+                            }else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setTitle("信息" ) ;
+                        builder.setMessage("二维码已过期！" ) ;
+                        builder.setPositiveButton("是", null);
+                        builder.show();
+                            }
+                            Looper.loop();
+                        }
+                    }).start();
+
+
+
+                }
+
+                }
             }
-        }
     }
 
 

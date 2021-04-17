@@ -11,6 +11,7 @@ public class MySQliteHelper extends SQLiteOpenHelper {
     public static final String CREAT_USERLOGIN = "create table User(" +
             "id integer primary key autoincrement," +
             "username varchar(36)," +
+            "phone varchar(36),"    +
             "userid varchar(36)," +
             "pwd varchar(36))";
 

@@ -1,14 +1,24 @@
 package com.example.evcharger;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
+import com.example.evcharger.DAO.impl.Toolimpl;
+import com.example.evcharger.SQLite.MySQliteHelper;
+import com.example.evcharger.vo.Comment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +26,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class judge_page extends Fragment {
-
+    private SQLiteOpenHelper litedb;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -51,7 +61,51 @@ public class judge_page extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getView().findViewById(R.id.button5).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_judge_page_to_main_page));
+        getView().findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(getContext(),getArguments().getString("chargerid") , Toast.LENGTH_SHORT).show();
+
+
+                Comment comment = new Comment();
+//
+                comment.setStars(((RatingBar)getView().findViewById(R.id.ratingBar)).getRating());
+                comment.setChargerid(Integer.parseInt(getArguments().getString("chargerid")));
+                comment.setPay(getArguments().getFloat("pay"));
+                comment.setReduction(getArguments().getFloat("reduction"));
+                comment.setPayoption(getArguments().getString("payoption"));
+                comment.setComment(((TextView)getView().findViewById(R.id.comment)).getText().toString());
+
+                litedb = new MySQliteHelper(getContext(), "User", null, 1);
+                SQLiteDatabase db = litedb.getWritableDatabase();
+                Cursor cursor = db.query("User", null, null, null, null, null, null);
+                String userid = null;
+                if (cursor.moveToFirst()) {
+                    do {
+                        userid = cursor.getString(cursor.getColumnIndex("userid"));
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
+                db.close();
+                comment.setUserid(Integer.parseInt(userid));
+
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Looper.prepare();
+                        Toolimpl toolimpl = new Toolimpl();
+                        toolimpl.addComment(comment);
+                        Looper.loop();
+                    }
+                }).start();
+
+                NavController navController = Navigation.findNavController(getView());
+                navController.navigate(R.id.action_judge_page_to_main_page);
+            }
+        });
+
+
     }
 
     @Override

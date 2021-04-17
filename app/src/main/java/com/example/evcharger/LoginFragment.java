@@ -24,6 +24,9 @@ import com.example.evcharger.DAO.impl.Userimpl;
 import com.example.evcharger.SQLite.MySQliteHelper;
 import com.example.evcharger.vo.User;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link LoginFragment#newInstance} factory method to
@@ -33,7 +36,7 @@ public class LoginFragment extends Fragment {
     private Boolean option;
     private SQLiteOpenHelper litedb;
     private SQLiteDatabase db;
-    String userid = null;
+    JSONObject userinfo =null;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -173,7 +176,6 @@ public class LoginFragment extends Fragment {
                          db = litedb.getWritableDatabase();
                          ContentValues contentValues = new ContentValues();
                          contentValues.put("username",name);
-                         contentValues.put("pwd",pwd);
 
 
 
@@ -182,21 +184,29 @@ public class LoginFragment extends Fragment {
                                  @Override
                                  public void run() {
                                      Looper.prepare();
-                                     userid = ui.getUserid(user);
+                                     try {
+                                         userinfo = new JSONObject(ui.getUserinfo(user));
+                                     } catch (JSONException e) {
+                                         e.printStackTrace();
+                                     }
                                      Looper.loop();
                                  }
                              }).start();
 
-                         while (userid==null){
+                         while (userinfo==null){
                              try {
                                  Thread.currentThread().sleep(100);
                              } catch (InterruptedException e) {
                                  e.printStackTrace();
                              }
                          }
-
-
-                         contentValues.put("userid",userid);
+                         try {
+                             Log.d("getUserid",userinfo.toString());
+                             contentValues.put("userid",userinfo.getString("userid"));
+                             contentValues.put("phone",userinfo.getString("phone"));
+                         } catch (JSONException e) {
+                             e.printStackTrace();
+                         }
                          db.insert("User",null,contentValues);
                          NC.navigate(R.id.action_loginFragment_to_main_page);
                      }else {

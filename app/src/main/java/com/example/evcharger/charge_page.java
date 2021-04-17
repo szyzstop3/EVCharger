@@ -1,17 +1,16 @@
 package com.example.evcharger;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,19 +75,32 @@ public class charge_page extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
+
+
+
         getView().findViewById(R.id.button21).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavController navController = Navigation.findNavController(getView());
-                navController.navigate(R.id.action_charge_page_to_payFragment);
+                Bundle bundle = new Bundle();
+                //充电桩硬件反馈接口
+                bundle.putFloat("pay",98.21f);
+                bundle.putString("start","14:51");
+                bundle.putString("end","15:34");
+                bundle.putString("chargerid",getArguments().getString("chargerid"));
+//                Toast.makeText(getContext(),getArguments().getString("chargerid") , Toast.LENGTH_SHORT).show();
+
+                navController.navigate(R.id.action_charge_page_to_payFragment,bundle);
             }
         });
         Bundle bundle = getArguments();
         if(bundle != null)
         {
-            String testvalue = bundle.getString("testvalue");
+            ((TextView)getView().findViewById(R.id.chargername)).setText("名称："+bundle.getString("chargername"));
             TextView tvSub = getView().findViewById(R.id.textView10);
-            tvSub.setText(testvalue);
+            tvSub.setText("充电桩状态："+bundle.getString("state"));
         }
     }
 }
