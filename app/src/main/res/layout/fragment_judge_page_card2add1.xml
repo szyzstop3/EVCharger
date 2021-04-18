@@ -129,7 +129,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/time1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"

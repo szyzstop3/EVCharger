@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private long mExitTime;
     private boolean isInterception = false;
     private boolean isFirstIn = true;
+    private boolean iscresuc = false;
 
     boolean ri;
 
@@ -50,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
     public LocationClient mLocationClient = null;
 
 
+    //用于提示充电桩注册成功
+    public void chargerRS(boolean b){
+        this.iscresuc = b;
+    }
+    public boolean getcresuc(){
+        return this.iscresuc;
+    }
 
     public void setInterception(boolean isInterception) {
         this.isInterception = isInterception;
@@ -147,12 +155,13 @@ public class MainActivity extends AppCompatActivity {
                                     bundle.putString("longitude",jsonObject.getString("longitude"));
                                     bundle.putString("latitude",jsonObject.getString("latitude"));
                                     bundle.putString("state",jsonObject.getString("state"));
+                                    bundle.putString("location",jsonObject.getString("location"));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
 
                                 bundle.putString("chargerid",""+charger.getChargerid());
-                                Log.d("validCharger","chargerid "+charger.getChargerid());
+                                Log.d("validCharger","location "+bundle.getString("location"));
                                 //展示解码结果
                                 Navigation.findNavController(viewById).navigate(R.id.action_main_page_to_charge_page,bundle);
 //                TextView viewById1 = findViewById(R.id.textView10);

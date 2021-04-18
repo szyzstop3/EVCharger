@@ -10,5 +10,7 @@ public interface ToolDAO {
     public String getCharger(Charger charger);
     //上传用户评论信息
     public void addComment(Comment comment);
+    //注册充电桩
+    public void registcharger(Charger charger);
 
 }

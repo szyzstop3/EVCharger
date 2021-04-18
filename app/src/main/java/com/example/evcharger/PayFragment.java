@@ -89,6 +89,8 @@ public class PayFragment extends Fragment {
 
         ((TextView)getView().findViewById(R.id.textView11)).setText("姓名："+name);
         ((TextView)getView().findViewById(R.id.textView12)).setText("手机号："+phone);
+        ((TextView)getView().findViewById(R.id.time1)).setText("地址："+getArguments().getString("location"));
+
 
         Bundle bundle = getArguments();
         if(bundle != null)
@@ -117,6 +119,7 @@ public class PayFragment extends Fragment {
                     bundle.putFloat("pay",getArguments().getFloat("pay"));
                     bundle.putString("chargerid",getArguments().getString("chargerid"));
                     bundle.putString("time", time);
+                    bundle.putString("location",getArguments().getString("location"));
 
 //                    Toast.makeText(getContext(),getArguments().getString("chargerid") , Toast.LENGTH_SHORT).show();
 

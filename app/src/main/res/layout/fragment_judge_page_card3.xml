@@ -80,6 +80,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
+                android:id="@+id/button9"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:drawable/ic_notification_overlay"
+                android:gravity="center"
+                android:shadowColor="#FFFFFF"
+                android:text="清空评论"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button16"
+                app:layout_constraintVertical_bias="0.533" />
+
+            <Button
                 android:id="@+id/button5"
                 android:layout_width="340dp"
                 android:layout_height="wrap_content"

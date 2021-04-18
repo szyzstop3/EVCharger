@@ -61,6 +61,56 @@ public class judge_page extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
+        ((TextView)getView().findViewById(R.id.comment)).getText().toString();
+        getView().findViewById(R.id.button16).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((TextView)getView().findViewById(R.id.comment)).setText(((TextView)getView().findViewById(R.id.comment)).getText().toString()
+                +"/#充电速度很快#/");
+            }
+        });
+        getView().findViewById(R.id.button17).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((TextView)getView().findViewById(R.id.comment)).setText(((TextView)getView().findViewById(R.id.comment)).getText().toString()
+                        +"/#位置很好找#/");
+            }
+        });
+        getView().findViewById(R.id.button18).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((TextView)getView().findViewById(R.id.comment)).setText(((TextView)getView().findViewById(R.id.comment)).getText().toString()
+                        +"/#电压很稳定#/");
+            }
+        });
+        getView().findViewById(R.id.button20).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((TextView)getView().findViewById(R.id.comment)).setText(((TextView)getView().findViewById(R.id.comment)).getText().toString()
+                        +"/#充电桩质量好#/");
+            }
+        });
+
+        getView().findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((TextView)getView().findViewById(R.id.comment)).setText("");
+            }
+        });
+
+
+
+
+        ((TextView)getView().findViewById(R.id.textView18)).setText(getArguments().getString("location"));
+        ((TextView)getView().findViewById(R.id.time1)).setText(getArguments().getString("time"));
+        ((TextView)getView().findViewById(R.id.textView19)).setText(
+                getArguments().getFloat("pay") + "元(优惠卷减"+
+                        getArguments().getFloat("reduction")+"元)"
+                );
+
+
         getView().findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

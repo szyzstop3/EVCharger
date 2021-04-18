@@ -110,4 +110,31 @@ public class Toolimpl implements ToolDAO {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void registcharger(Charger charger) {
+        try{
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost("http://8.140.120.98:8080/EVBackEnd-1.0-SNAPSHOT/regcharger");
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("chargername", charger.getChargerName()));
+            params.add(new BasicNameValuePair("brand", ""+charger.getBrand()));
+            params.add(new BasicNameValuePair("latitude", ""+charger.getLatitude()));
+            params.add(new BasicNameValuePair("longitude", ""+charger.getLongitude()));
+            params.add(new BasicNameValuePair("location", ""+charger.getLocation()));
+            params.add(new BasicNameValuePair("state", ""+charger.getState()));
+            params.add(new BasicNameValuePair("userid", ""+charger.getUserid()));
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params,"UTF-8");
+            httpPost.setEntity(entity);
+            HttpResponse httpResponse =  httpClient.execute(httpPost);
+            Log.d("registcharger",String.valueOf(httpResponse.getStatusLine().getStatusCode()));
+            //if (httpResponse.getStatusLine().getStatusCode() == 200) {
+            HttpEntity entity2 = httpResponse.getEntity();
+            InputStream in = entity2.getContent();
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(in));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

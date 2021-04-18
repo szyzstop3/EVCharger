@@ -126,7 +126,7 @@ public class RegisterFragment extends Fragment {
         //一句话实现导航
         getView().findViewById(R.id.button4).setOnClickListener(Navigation.
                 createNavigateOnClickListener(R.id.action_registerFragment_to_loginFragment));
-        getView().findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        getView().findViewById(R.id.buttonm).setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {

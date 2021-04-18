@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -74,6 +75,14 @@ public class Userinfo_page extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        if(((MainActivity)getActivity()).getcresuc()){
+            Toast.makeText(getContext(), "恭喜共享成功！", Toast.LENGTH_LONG).show();
+            ((MainActivity)getActivity()).chargerRS(false);
+        }
+
+        getView().findViewById(R.id.button20).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_userinfo_page_to_RC));
+
         litedb = new MySQliteHelper(getContext(), "User", null, 1);
         SQLiteDatabase db = litedb.getWritableDatabase();
         Cursor cursor = db.query("User", null, null, null, null, null, null);
@@ -100,8 +109,21 @@ public class Userinfo_page extends Fragment {
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        getView().findViewById(R.id.imageView9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(getView());
+                navController.navigate(R.id.action_userinfo_page_to_setFragment);
+            }
+        });
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_userinfo_page, container, false);
     }

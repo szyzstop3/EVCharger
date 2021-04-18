@@ -90,6 +90,7 @@ public class charge_page extends Fragment {
                 bundle.putString("start","14:51");
                 bundle.putString("end","15:34");
                 bundle.putString("chargerid",getArguments().getString("chargerid"));
+                bundle.putString("location",getArguments().getString("location"));
 //                Toast.makeText(getContext(),getArguments().getString("chargerid") , Toast.LENGTH_SHORT).show();
 
                 navController.navigate(R.id.action_charge_page_to_payFragment,bundle);
