@@ -1,14 +1,11 @@
 package com.example.evcharger;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,19 +19,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.baidu.location.BDAbstractLocationListener;
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.BitmapDescriptor;
-import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.MyLocationData;
 import com.example.evcharger.SQLite.MySQliteHelper;
 import com.huawei.hms.hmsscankit.ScanUtil;
-
-import com.baidu.mapapi.map.BaiduMap;
 
 
 
@@ -112,6 +98,7 @@ public class main_page extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
         //((map_card)getTargetFragment()).locate();
 
 //        getView().findViewById(R.id.findlocation).setOnClickListener(new View.OnClickListener() {
@@ -177,10 +164,10 @@ public class main_page extends Fragment {
             @Override
             public void onClick(View view) {
                 TextView viewById = getView().findViewById(R.id.textView5);
-                viewById.setText("1启动");
+                //viewById.setText("1启动");
                 //CAMERA_REQ_CODE为用户自定义，用于接收权限校验结果
                 main_page.this.requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, CAMERA_REQ_CODE);
-                viewById.setText("99启动");
+                //viewById.setText("99启动");
             }
         });
 
@@ -217,10 +204,10 @@ public class main_page extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         TextView viewById = getView().findViewById(R.id.textView5);
-        viewById.setText("2调用接口");
+        //viewById.setText("2调用接口");
         //判断“requestCode”是否为申请权限时设置请求码CAMERA_REQ_CODE，然后校验权限开启状态
         if (requestCode == CAMERA_REQ_CODE && grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-            viewById.setText("3调用接口成功");
+            //viewById.setText("3调用接口成功");
             //调用扫码接口，构建扫码能力，需您实现
             ScanUtil.startScan(this.getActivity(), REQUEST_CODE_SCAN_ONE, null);
             //viewById.setText("houmian");

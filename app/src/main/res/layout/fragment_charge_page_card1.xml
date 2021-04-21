@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="204dp"
             android:layout_marginEnd="30dp"
-            android:text="86%"
+            android:text="99%"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="30sp"
@@ -62,24 +62,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="214dp"
-            android:layout_height="182dp"
-            android:layout_marginTop="88dp"
-            android:background="#FFFFFF"
-            android:src="@drawable/tesla_model_s"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.081"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/textView27"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="284dp"
-            android:text="已充电量：10.3度"
+            android:text="已充电量：75.47度"
             android:textAlignment="center"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="312dp"
-            android:text="预估价格:30.6元"
+            android:text="预估价格:113.21元"
             android:textAlignment="center"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="340dp"
-            android:text="距离充满时间：35分钟"
+            android:text="距离充满时间:小于1分钟"
             android:textAlignment="center"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
@@ -135,8 +123,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.939"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/chargername"
@@ -166,15 +153,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView30"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="214dp"
+            android:layout_height="182dp"
+            android:layout_marginTop="88dp"
+            android:src="@drawable/jianghuai"
+            app:layout_constraintEnd_toStartOf="@+id/gv_error"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView7" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

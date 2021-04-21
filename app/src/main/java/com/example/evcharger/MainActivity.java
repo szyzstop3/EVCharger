@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("validCharger","1");
 
         TextView viewById = findViewById(R.id.textView5);
-        viewById.setText("4调用回调接口");
+        //viewById.setText("4调用回调接口");
         if (resultCode != RESULT_OK || data == null) {
 
             return;
