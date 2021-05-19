@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D83949AB"
     tools:context=".judge_page">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,14 +14,16 @@
         <include
             android:id="@+id/include5"
             layout="@layout/fragment_judge_page_card2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
             layout="@layout/fragment_judge_page_card2add1"
-            android:layout_width="380dp"
+            android:layout_width="330dp"
             android:layout_height="180dp"
             app:layout_constraintBottom_toTopOf="@+id/include6"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,9 +35,9 @@
         <include
             android:id="@+id/include6"
             layout="@layout/fragment_judge_page_card3"
-            android:layout_width="380dp"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/include5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -177,9 +177,6 @@ public class LoginFragment extends Fragment {
                          ContentValues contentValues = new ContentValues();
                          contentValues.put("username",name);
 
-
-
-
                              new Thread(new Runnable() {
                                  @Override
                                  public void run() {

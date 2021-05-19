@@ -75,24 +75,30 @@
                         android:layout_height="wrap_content" />
 
                     <include
-                        layout="@layout/fragment_message_card"
+                        layout="@layout/fragment_message2_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                     <include
-                        layout="@layout/fragment_message_card"
+                        layout="@layout/fragment_message3_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                     <include
-                        layout="@layout/fragment_message_card"
+                        layout="@layout/fragment_message4_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                     <include
-                        layout="@layout/fragment_message_card"
+                        layout="@layout/fragment_message5_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
+
+                    <include
+                        layout="@layout/fragment_message6_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
                 </LinearLayout>
             </ScrollView>
         </androidx.cardview.widget.CardView>
