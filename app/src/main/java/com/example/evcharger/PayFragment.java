@@ -44,7 +44,7 @@ public class PayFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((MainActivity) getActivity()).setInterception(false);
+        ((MainActivity) getActivity()).setInterception(true);
     }
 
     public PayFragment() {
